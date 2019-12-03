@@ -1,0 +1,33 @@
+{
+  "name": "@2003scape/rsc-landscape",
+  "version": "1.0.0",
+  "description": "(de)serialize runescape classic landscape files",
+  "main": "./src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2003scape/rsc-landscape.git"
+  },
+  "keywords": [
+    "runescape",
+    "rsc",
+    "landscape",
+    "archive",
+    "serialize",
+    "png"
+  ],
+  "author": "2003Scape Team",
+  "license": "AGPL-3.0+",
+  "bugs": {
+    "url": "https://github.com/2003scape/rsc-landscape/issues"
+  },
+  "homepage": "https://github.com/2003scape/rsc-landscape#readme",
+  "dependencies": {
+    "@2003scape/rsc-archiver": "^1.0.1",
+    "canvas": "^2.6.0",
+    "chalk": "^3.0.0",
+    "color-functions": "^3.0.1",
+    "mkdirp-promise": "^5.0.1",
+    "nearest-color": "^0.4.4",
+    "yargs": "^15.0.2"
+  }
+}
