@@ -1,0 +1,1547 @@
+[
+    {
+        "type": "altar",
+        "x": 7582,
+        "y": 7322
+    },
+    {
+        "type": "altar",
+        "x": 7607,
+        "y": 7097
+    },
+    {
+        "type": "altar",
+        "x": 7776,
+        "y": 6746
+    },
+    {
+        "type": "altar",
+        "x": 7925,
+        "y": 6641
+    },
+    {
+        "type": "altar",
+        "x": 8121,
+        "y": 7007
+    },
+    {
+        "type": "altar",
+        "x": 8227,
+        "y": 6630
+    },
+    {
+        "type": "altar",
+        "x": 8290,
+        "y": 6711
+    },
+    {
+        "type": "altar",
+        "x": 8441,
+        "y": 7386
+    },
+    {
+        "type": "altar",
+        "x": 8523,
+        "y": 6658
+    },
+    {
+        "type": "altar",
+        "x": 8563,
+        "y": 6698
+    },
+    {
+        "type": "altar",
+        "x": 8975,
+        "y": 6704
+    },
+    {
+        "type": "altar",
+        "x": 9018,
+        "y": 7329
+    },
+    {
+        "type": "altar",
+        "x": 9049,
+        "y": 6753
+    },
+    {
+        "type": "altar",
+        "x": 9054,
+        "y": 6915
+    },
+    {
+        "type": "amulet-shop",
+        "x": 8031,
+        "y": 7425
+    },
+    {
+        "type": "anvil",
+        "x": 7371,
+        "y": 7024
+    },
+    {
+        "type": "anvil",
+        "x": 7608,
+        "y": 7606
+    },
+    {
+        "type": "anvil",
+        "x": 7645,
+        "y": 7423
+    },
+    {
+        "type": "anvil",
+        "x": 7654,
+        "y": 6852
+    },
+    {
+        "type": "anvil",
+        "x": 7814,
+        "y": 6677
+    },
+    {
+        "type": "anvil",
+        "x": 7993,
+        "y": 7555
+    },
+    {
+        "type": "anvil",
+        "x": 8383,
+        "y": 6788
+    },
+    {
+        "type": "anvil",
+        "x": 8474,
+        "y": 7462
+    },
+    {
+        "type": "anvil",
+        "x": 8912,
+        "y": 6858
+    },
+    {
+        "type": "anvil",
+        "x": 9005,
+        "y": 6835
+    },
+    {
+        "type": "apothecary",
+        "x": 8921,
+        "y": 6884
+    },
+    {
+        "type": "archery-shop",
+        "x": 8071,
+        "y": 6789
+    },
+    {
+        "type": "archery-shop",
+        "x": 9004,
+        "y": 6860
+    },
+    {
+        "type": "armour-conversion",
+        "x": 7686,
+        "y": 7129
+    },
+    {
+        "type": "armour-conversion",
+        "x": 9034,
+        "y": 6880
+    },
+    {
+        "type": "axe-shop",
+        "x": 8557,
+        "y": 7209
+    },
+    {
+        "type": "axe-shop",
+        "x": 8980,
+        "y": 7325
+    },
+    {
+        "type": "bank",
+        "x": 7197,
+        "y": 6694
+    },
+    {
+        "type": "bank",
+        "x": 7212,
+        "y": 6838
+    },
+    {
+        "type": "bank",
+        "x": 7588,
+        "y": 7580
+    },
+    {
+        "type": "bank",
+        "x": 7696,
+        "y": 7163
+    },
+    {
+        "type": "bank",
+        "x": 8031,
+        "y": 6804
+    },
+    {
+        "type": "bank",
+        "x": 8359,
+        "y": 6979
+    },
+    {
+        "type": "bank",
+        "x": 8502,
+        "y": 7026
+    },
+    {
+        "type": "bank",
+        "x": 8697,
+        "y": 7231
+    },
+    {
+        "type": "bank",
+        "x": 8705,
+        "y": 6674
+    },
+    {
+        "type": "bank",
+        "x": 8904,
+        "y": 6829
+    },
+    {
+        "type": "bank",
+        "x": 9044,
+        "y": 6859
+    },
+    {
+        "type": "bank",
+        "x": 9080,
+        "y": 7406
+    },
+    {
+        "type": "bed",
+        "x": 7118,
+        "y": 6733
+    },
+    {
+        "type": "bed",
+        "x": 7302,
+        "y": 6764
+    },
+    {
+        "type": "bed",
+        "x": 7380,
+        "y": 6654
+    },
+    {
+        "type": "bed",
+        "x": 7396,
+        "y": 6933
+    },
+    {
+        "type": "bed",
+        "x": 7412,
+        "y": 7025
+    },
+    {
+        "type": "bed",
+        "x": 7450,
+        "y": 7017
+    },
+    {
+        "type": "bed",
+        "x": 7466,
+        "y": 7153
+    },
+    {
+        "type": "bed",
+        "x": 7514,
+        "y": 7184
+    },
+    {
+        "type": "bed",
+        "x": 7540,
+        "y": 7552
+    },
+    {
+        "type": "bed",
+        "x": 7612,
+        "y": 7012
+    },
+    {
+        "type": "bed",
+        "x": 7666,
+        "y": 6930
+    },
+    {
+        "type": "bed",
+        "x": 7670,
+        "y": 7279
+    },
+    {
+        "type": "bed",
+        "x": 7671,
+        "y": 6778
+    },
+    {
+        "type": "bed",
+        "x": 7744,
+        "y": 7102
+    },
+    {
+        "type": "bed",
+        "x": 7948,
+        "y": 6833
+    },
+    {
+        "type": "bed",
+        "x": 7971,
+        "y": 7323
+    },
+    {
+        "type": "bed",
+        "x": 8007,
+        "y": 7615
+    },
+    {
+        "type": "bed",
+        "x": 8029,
+        "y": 7368
+    },
+    {
+        "type": "bed",
+        "x": 8036,
+        "y": 6774
+    },
+    {
+        "type": "bed",
+        "x": 8064,
+        "y": 6997
+    },
+    {
+        "type": "bed",
+        "x": 8231,
+        "y": 7055
+    },
+    {
+        "type": "bed",
+        "x": 8333,
+        "y": 7439
+    },
+    {
+        "type": "bed",
+        "x": 8426,
+        "y": 6888
+    },
+    {
+        "type": "bed",
+        "x": 8460,
+        "y": 7054
+    },
+    {
+        "type": "bed",
+        "x": 8486,
+        "y": 7474
+    },
+    {
+        "type": "bed",
+        "x": 8507,
+        "y": 7241
+    },
+    {
+        "type": "bed",
+        "x": 8599,
+        "y": 6698
+    },
+    {
+        "type": "bed",
+        "x": 8674,
+        "y": 6684
+    },
+    {
+        "type": "bed",
+        "x": 8702,
+        "y": 7158
+    },
+    {
+        "type": "bed",
+        "x": 8728,
+        "y": 6983
+    },
+    {
+        "type": "bed",
+        "x": 8831,
+        "y": 6821
+    },
+    {
+        "type": "bed",
+        "x": 8937,
+        "y": 6746
+    },
+    {
+        "type": "bed",
+        "x": 8988,
+        "y": 6918
+    },
+    {
+        "type": "bed",
+        "x": 8999,
+        "y": 7318
+    },
+    {
+        "type": "bed",
+        "x": 9111,
+        "y": 6678
+    },
+    {
+        "type": "bed",
+        "x": 9111,
+        "y": 6926
+    },
+    {
+        "type": "bed",
+        "x": 9155,
+        "y": 7400
+    },
+    {
+        "type": "body-armour-shop",
+        "x": 8443,
+        "y": 7054
+    },
+    {
+        "type": "body-armour-shop",
+        "x": 8999,
+        "y": 6821
+    },
+    {
+        "type": "certificate-trader",
+        "x": 7538,
+        "y": 6830
+    },
+    {
+        "type": "certificate-trader",
+        "x": 7597,
+        "y": 7012
+    },
+    {
+        "type": "certificate-trader",
+        "x": 8025,
+        "y": 7343
+    },
+    {
+        "type": "certificate-trader",
+        "x": 8068,
+        "y": 6770
+    },
+    {
+        "type": "certificate-trader",
+        "x": 8663,
+        "y": 7229
+    },
+    {
+        "type": "tannery",
+        "x": 8310,
+        "y": 7164
+    },
+    {
+        "type": "tannery",
+        "x": 9092,
+        "y": 7346
+    },
+    {
+        "type": "clothes-shop",
+        "x": 7198,
+        "y": 6715
+    },
+    {
+        "type": "clothes-shop",
+        "x": 8938,
+        "y": 6870
+    },
+    {
+        "type": "combat-practice",
+        "x": 9038,
+        "y": 6829
+    },
+    {
+        "type": "cookery-shop",
+        "x": 7208,
+        "y": 6631
+    },
+    {
+        "type": "cookery-shop",
+        "x": 7281,
+        "y": 6627
+    },
+    {
+        "type": "cookery-shop",
+        "x": 7506,
+        "y": 7570
+    },
+    {
+        "type": "crafting-shop",
+        "x": 7686,
+        "y": 7100
+    },
+    {
+        "type": "crafting-shop",
+        "x": 8358,
+        "y": 7327
+    },
+    {
+        "type": "crafting-shop",
+        "x": 9196,
+        "y": 7346
+    },
+    {
+        "type": "fishing-shop",
+        "x": 7551,
+        "y": 6870
+    },
+    {
+        "type": "fishing-shop",
+        "x": 8094,
+        "y": 6779
+    },
+    {
+        "type": "fishing-shop",
+        "x": 8518,
+        "y": 7264
+    },
+    {
+        "type": "fishing-point",
+        "x": 7073,
+        "y": 6686
+    },
+    {
+        "type": "fishing-point",
+        "x": 7118,
+        "y": 6855
+    },
+    {
+        "type": "fishing-point",
+        "x": 7141,
+        "y": 6744
+    },
+    {
+        "type": "fishing-point",
+        "x": 7347,
+        "y": 6776
+    },
+    {
+        "type": "fishing-point",
+        "x": 7381,
+        "y": 6857
+    },
+    {
+        "type": "fishing-point",
+        "x": 7500,
+        "y": 6952
+    },
+    {
+        "type": "fishing-point",
+        "x": 7576,
+        "y": 6818
+    },
+    {
+        "type": "fishing-point",
+        "x": 7601,
+        "y": 6849
+    },
+    {
+        "type": "fishing-point",
+        "x": 7603,
+        "y": 6820
+    },
+    {
+        "type": "fishing-point",
+        "x": 7910,
+        "y": 7153
+    },
+    {
+        "type": "fishing-point",
+        "x": 7937,
+        "y": 7290
+    },
+    {
+        "type": "fishing-point",
+        "x": 8072,
+        "y": 6822
+    },
+    {
+        "type": "fishing-point",
+        "x": 8105,
+        "y": 6829
+    },
+    {
+        "type": "fishing-point",
+        "x": 8135,
+        "y": 6838
+    },
+    {
+        "type": "fishing-point",
+        "x": 8202,
+        "y": 7604
+    },
+    {
+        "type": "fishing-point",
+        "x": 8229,
+        "y": 7375
+    },
+    {
+        "type": "fishing-point",
+        "x": 8240,
+        "y": 7353
+    },
+    {
+        "type": "fishing-point",
+        "x": 8255,
+        "y": 7379
+    },
+    {
+        "type": "fishing-point",
+        "x": 8446,
+        "y": 7419
+    },
+    {
+        "type": "fishing-point",
+        "x": 8457,
+        "y": 7432
+    },
+    {
+        "type": "fishing-point",
+        "x": 8652,
+        "y": 7255
+    },
+    {
+        "type": "fishing-point",
+        "x": 8665,
+        "y": 7283
+    },
+    {
+        "type": "fishing-point",
+        "x": 8682,
+        "y": 7297
+    },
+    {
+        "type": "fishing-point",
+        "x": 8716,
+        "y": 6841
+    },
+    {
+        "type": "fishing-point",
+        "x": 8730,
+        "y": 6825
+    },
+    {
+        "type": "fishing-point",
+        "x": 8972,
+        "y": 7211
+    },
+    {
+        "type": "fishing-point",
+        "x": 9076,
+        "y": 7467
+    },
+    {
+        "type": "food-shop",
+        "x": 7198,
+        "y": 6655
+    },
+    {
+        "type": "food-shop",
+        "x": 7717,
+        "y": 7117
+    },
+    {
+        "type": "food-shop",
+        "x": 7718,
+        "y": 7091
+    },
+    {
+        "type": "food-shop",
+        "x": 7997,
+        "y": 7375
+    },
+    {
+        "type": "food-shop",
+        "x": 8528,
+        "y": 7293
+    },
+    {
+        "type": "shield-shop",
+        "x": 8423,
+        "y": 6918
+    },
+    {
+        "type": "furnace",
+        "x": 7574,
+        "y": 7097
+    },
+    {
+        "type": "furnace",
+        "x": 8093,
+        "y": 7006
+    },
+    {
+        "type": "furnace",
+        "x": 8426,
+        "y": 6956
+    },
+    {
+        "type": "furnace",
+        "x": 8956,
+        "y": 7205
+    },
+    {
+        "type": "furnace",
+        "x": 9096,
+        "y": 7362
+    },
+    {
+        "type": "gem-shop",
+        "x": 7700,
+        "y": 7119
+    },
+    {
+        "type": "gem-shop",
+        "x": 8357,
+        "y": 7025
+    },
+    {
+        "type": "gem-shop",
+        "x": 9091,
+        "y": 7323
+    },
+    {
+        "type": "general-shop",
+        "x": 7293,
+        "y": 7080
+    },
+    {
+        "type": "general-shop",
+        "x": 7403,
+        "y": 7434
+    },
+    {
+        "type": "general-shop",
+        "x": 7611,
+        "y": 7125
+    },
+    {
+        "type": "general-shop",
+        "x": 7970,
+        "y": 7575
+    },
+    {
+        "type": "general-shop",
+        "x": 8037,
+        "y": 6838
+    },
+    {
+        "type": "general-shop",
+        "x": 8265,
+        "y": 7462
+    },
+    {
+        "type": "general-shop",
+        "x": 8360,
+        "y": 7302
+    },
+    {
+        "type": "general-shop",
+        "x": 8393,
+        "y": 6919
+    },
+    {
+        "type": "general-shop",
+        "x": 8679,
+        "y": 6647
+    },
+    {
+        "type": "general-shop",
+        "x": 8945,
+        "y": 7246
+    },
+    {
+        "type": "general-shop",
+        "x": 8968,
+        "y": 6866
+    },
+    {
+        "type": "general-shop",
+        "x": 9182,
+        "y": 7365
+    },
+    {
+        "type": "helmet-shop",
+        "x": 8644,
+        "y": 6850
+    },
+    {
+        "type": "herblaw-shop",
+        "x": 8039,
+        "y": 7014
+    },
+    {
+        "type": "herblaw-shop",
+        "x": 8248,
+        "y": 6841
+    },
+    {
+        "type": "jewellery-shop",
+        "x": 8513,
+        "y": 7218
+    },
+    {
+        "type": "kebab-shop",
+        "x": 9089,
+        "y": 7375
+    },
+    {
+        "type": "leg-armour-shop",
+        "x": 9185,
+        "y": 7383
+    },
+    {
+        "type": "mace-shop",
+        "x": 8365,
+        "y": 6939
+    },
+    {
+        "type": "magic-shop",
+        "x": 8531,
+        "y": 7220
+    },
+    {
+        "type": "magic-shop",
+        "x": 9047,
+        "y": 6889
+    },
+    {
+        "type": "mining-site",
+        "x": 7507,
+        "y": 7279
+    },
+    {
+        "type": "mining-site",
+        "x": 7523,
+        "y": 6675
+    },
+    {
+        "type": "mining-site",
+        "x": 7641,
+        "y": 7454
+    },
+    {
+        "type": "mining-site",
+        "x": 7786,
+        "y": 7033
+    },
+    {
+        "type": "mining-site",
+        "x": 7837,
+        "y": 7350
+    },
+    {
+        "type": "mining-site",
+        "x": 7840,
+        "y": 7447
+    },
+    {
+        "type": "mining-site",
+        "x": 8084,
+        "y": 6922
+    },
+    {
+        "type": "mining-site",
+        "x": 8113,
+        "y": 7152
+    },
+    {
+        "type": "mining-site",
+        "x": 8262,
+        "y": 6974
+    },
+    {
+        "type": "mining-site",
+        "x": 8335,
+        "y": 7157
+    },
+    {
+        "type": "mining-site",
+        "x": 8416,
+        "y": 7239
+    },
+    {
+        "type": "mining-site",
+        "x": 8676,
+        "y": 6832
+    },
+    {
+        "type": "mining-site",
+        "x": 8870,
+        "y": 6940
+    },
+    {
+        "type": "mining-site",
+        "x": 9132,
+        "y": 6959
+    },
+    {
+        "type": "mining-site",
+        "x": 9136,
+        "y": 7077
+    },
+    {
+        "type": "pickable-lock",
+        "x": 7500,
+        "y": 6989
+    },
+    {
+        "type": "pickable-lock",
+        "x": 7517,
+        "y": 7133
+    },
+    {
+        "type": "pickable-lock",
+        "x": 7528,
+        "y": 7069
+    },
+    {
+        "type": "pickable-lock",
+        "x": 7598,
+        "y": 7060
+    },
+    {
+        "type": "pickable-lock",
+        "x": 7732,
+        "y": 7127
+    },
+    {
+        "type": "pickable-lock",
+        "x": 7736,
+        "y": 7089
+    },
+    {
+        "type": "pub",
+        "x": 7281,
+        "y": 6646
+    },
+    {
+        "type": "pub",
+        "x": 7457,
+        "y": 7610
+    },
+    {
+        "type": "pub",
+        "x": 7504,
+        "y": 7070
+    },
+    {
+        "type": "pub",
+        "x": 7565,
+        "y": 7466
+    },
+    {
+        "type": "pub",
+        "x": 7780,
+        "y": 6675
+    },
+    {
+        "type": "pub",
+        "x": 7994,
+        "y": 7423
+    },
+    {
+        "type": "pub",
+        "x": 8394,
+        "y": 6960
+    },
+    {
+        "type": "pub",
+        "x": 8587,
+        "y": 7194
+    },
+    {
+        "type": "pub",
+        "x": 8986,
+        "y": 6890
+    },
+    {
+        "type": "pub",
+        "x": 9105,
+        "y": 6662
+    },
+    {
+        "type": "scimitar-shop",
+        "x": 9121,
+        "y": 7349
+    },
+    {
+        "type": "silk-trader",
+        "x": 7655,
+        "y": 7107
+    },
+    {
+        "type": "silk-trader",
+        "x": 9123,
+        "y": 7329
+    },
+    {
+        "type": "skirt-armour-shop",
+        "x": 9188,
+        "y": 7407
+    },
+    {
+        "type": "spinning-wheel",
+        "x": 7167,
+        "y": 6886
+    },
+    {
+        "type": "spinning-wheel",
+        "x": 7185,
+        "y": 6862
+    },
+    {
+        "type": "spinning-wheel",
+        "x": 7777,
+        "y": 6717
+    },
+    {
+        "type": "spinning-wheel",
+        "x": 8295,
+        "y": 7162
+    },
+    {
+        "type": "spinning-wheel",
+        "x": 8662,
+        "y": 6847
+    },
+    {
+        "type": "spinning-wheel",
+        "x": 8932,
+        "y": 7322
+    },
+    {
+        "type": "staff-shop",
+        "x": 8930,
+        "y": 6835
+    },
+    {
+        "type": "sword-shop",
+        "x": 8210,
+        "y": 6829
+    },
+    {
+        "type": "sword-shop",
+        "x": 8944,
+        "y": 6894
+    },
+    {
+        "type": "rare-trees",
+        "x": 7079,
+        "y": 6886
+    },
+    {
+        "type": "rare-trees",
+        "x": 7157,
+        "y": 6852
+    },
+    {
+        "type": "rare-trees",
+        "x": 7671,
+        "y": 6704
+    },
+    {
+        "type": "rare-trees",
+        "x": 7791,
+        "y": 6801
+    },
+    {
+        "type": "rare-trees",
+        "x": 7797,
+        "y": 6744
+    },
+    {
+        "type": "rare-trees",
+        "x": 7774,
+        "y": 6917
+    },
+    {
+        "type": "rare-trees",
+        "x": 7831,
+        "y": 6645
+    },
+    {
+        "type": "rare-trees",
+        "x": 7857,
+        "y": 7019
+    },
+    {
+        "type": "quest",
+        "x": 7242,
+        "y": 6668
+    },
+    {
+        "type": "quest",
+        "x": 7363,
+        "y": 7407
+    },
+    {
+        "type": "quest",
+        "x": 7391,
+        "y": 6668
+    },
+    {
+        "type": "quest",
+        "x": 7491,
+        "y": 7055
+    },
+    {
+        "type": "quest",
+        "x": 7495,
+        "y": 7084
+    },
+    {
+        "type": "quest",
+        "x": 7497,
+        "y": 7181
+    },
+    {
+        "type": "quest",
+        "x": 7530,
+        "y": 7121
+    },
+    {
+        "type": "quest",
+        "x": 7597,
+        "y": 7315
+    },
+    {
+        "type": "quest",
+        "x": 7603,
+        "y": 7220
+    },
+    {
+        "type": "quest",
+        "x": 7626,
+        "y": 7349
+    },
+    {
+        "type": "quest",
+        "x": 7792,
+        "y": 7158
+    },
+    {
+        "type": "quest",
+        "x": 7815,
+        "y": 6848
+    },
+    {
+        "type": "quest",
+        "x": 7955,
+        "y": 6633
+    },
+    {
+        "type": "quest",
+        "x": 8042,
+        "y": 7575
+    },
+    {
+        "type": "quest",
+        "x": 8067,
+        "y": 6695
+    },
+    {
+        "type": "quest",
+        "x": 8214,
+        "y": 6651
+    },
+    {
+        "type": "quest",
+        "x": 8281,
+        "y": 6788
+    },
+    {
+        "type": "quest",
+        "x": 8294,
+        "y": 6696
+    },
+    {
+        "type": "quest",
+        "x": 8369,
+        "y": 6795
+    },
+    {
+        "type": "quest",
+        "x": 8402,
+        "y": 7004
+    },
+    {
+        "type": "quest",
+        "x": 8405,
+        "y": 7324
+    },
+    {
+        "type": "quest",
+        "x": 8417,
+        "y": 7033
+    },
+    {
+        "type": "quest",
+        "x": 8587,
+        "y": 7209
+    },
+    {
+        "type": "quest",
+        "x": 8602,
+        "y": 7203
+    },
+    {
+        "type": "quest",
+        "x": 8702,
+        "y": 7401
+    },
+    {
+        "type": "quest",
+        "x": 8703,
+        "y": 7181
+    },
+    {
+        "type": "quest",
+        "x": 8721,
+        "y": 7033
+    },
+    {
+        "type": "quest",
+        "x": 8821,
+        "y": 7330
+    },
+    {
+        "type": "quest",
+        "x": 8847,
+        "y": 6820
+    },
+    {
+        "type": "quest",
+        "x": 8873,
+        "y": 7177
+    },
+    {
+        "type": "quest",
+        "x": 8949,
+        "y": 7303
+    },
+    {
+        "type": "quest",
+        "x": 8953,
+        "y": 6867
+    },
+    {
+        "type": "quest",
+        "x": 8958,
+        "y": 6694
+    },
+    {
+        "type": "quest",
+        "x": 9021,
+        "y": 7313
+    },
+    {
+        "type": "quest",
+        "x": 9095,
+        "y": 6893
+    },
+    {
+        "type": "quest",
+        "x": 9125,
+        "y": 7414
+    },
+    {
+        "type": "dungeon",
+        "x": 7212,
+        "y": 7075
+    },
+    {
+        "type": "dungeon",
+        "x": 7388,
+        "y": 7449
+    },
+    {
+        "type": "dungeon",
+        "x": 7495,
+        "y": 6975
+    },
+    {
+        "type": "dungeon",
+        "x": 7497,
+        "y": 7294
+    },
+    {
+        "type": "dungeon",
+        "x": 7550,
+        "y": 7489
+    },
+    {
+        "type": "dungeon",
+        "x": 7580,
+        "y": 7616
+    },
+    {
+        "type": "dungeon",
+        "x": 7750,
+        "y": 6871
+    },
+    {
+        "type": "dungeon",
+        "x": 7780,
+        "y": 7136
+    },
+    {
+        "type": "dungeon",
+        "x": 8066,
+        "y": 6960
+    },
+    {
+        "type": "dungeon",
+        "x": 8079,
+        "y": 7410
+    },
+    {
+        "type": "dungeon",
+        "x": 8093,
+        "y": 7207
+    },
+    {
+        "type": "dungeon",
+        "x": 8150,
+        "y": 6630
+    },
+    {
+        "type": "dungeon",
+        "x": 8226,
+        "y": 6882
+    },
+    {
+        "type": "dungeon",
+        "x": 8492,
+        "y": 7449
+    },
+    {
+        "type": "dungeon",
+        "x": 8704,
+        "y": 6726
+    },
+    {
+        "type": "dungeon",
+        "x": 9017,
+        "y": 6743
+    },
+    {
+        "type": "quest",
+        "x": 9293,
+        "y": 7034
+    },
+    {
+        "type": "quest",
+        "x": 8854,
+        "y": 6862
+    },
+    {
+        "type": "quest",
+        "x": 8854,
+        "y": 6862
+    },
+    {
+        "type": "quest",
+        "x": 9163,
+        "y": 7536
+    },
+    {
+        "type": "bank",
+        "x": 9176,
+        "y": 7516
+    },
+    {
+        "type": "general-shop",
+        "x": 9162,
+        "y": 7508
+    },
+    {
+        "type": "quest",
+        "x": 7812,
+        "y": 6970
+    },
+    {
+        "type": "altar",
+        "x": 8350,
+        "y": 6628
+    },
+    {
+        "type": "dungeon",
+        "x": 8514,
+        "y": 6804
+    },
+    {
+        "type": "quest",
+        "x": 7888,
+        "y": 6534
+    },
+    {
+        "type": "dungeon",
+        "x": 8739,
+        "y": 6765
+    },
+    {
+        "type": "quest",
+        "x": 7207,
+        "y": 7364
+    },
+    {
+        "type": "quest",
+        "x": 7438,
+        "y": 7540
+    },
+    {
+        "type": "mining-site",
+        "x": 8073,
+        "y": 7787
+    },
+    {
+        "type": "general-shop",
+        "x": 8097,
+        "y": 7863
+    },
+    {
+        "type": "altar",
+        "x": 7253,
+        "y": 7272
+    },
+    {
+        "type": "pub",
+        "x": 8161,
+        "y": 7796
+    },
+    {
+        "type": "bed",
+        "x": 8176,
+        "y": 7806
+    },
+    {
+        "type": "fishing-point",
+        "x": 8180,
+        "y": 7834
+    },
+    {
+        "type": "fishing-shop",
+        "x": 8171,
+        "y": 7850
+    },
+    {
+        "type": "furnace",
+        "x": 8152,
+        "y": 7848
+    },
+    {
+        "type": "bank",
+        "x": 8146,
+        "y": 7874
+    },
+    {
+        "type": "quest",
+        "x": 8204,
+        "y": 7878
+    },
+    {
+        "type": "mining-site",
+        "x": 8119,
+        "y": 7707
+    },
+    {
+        "type": "mining-site",
+        "x": 8692,
+        "y": 6510
+    },
+    {
+        "type": "mining-site",
+        "x": 8526,
+        "y": 6449
+    },
+    {
+        "type": "mining-site",
+        "x": 8674,
+        "y": 6076
+    },
+    {
+        "type": "mining-site",
+        "x": 9032,
+        "y": 5988
+    },
+    {
+        "type": "mining-site",
+        "x": 8581,
+        "y": 5792
+    },
+    {
+        "type": "fishing-point",
+        "x": 8576,
+        "y": 6200
+    },
+    {
+        "type": "cookery-shop",
+        "x": 8546,
+        "y": 6194
+    },
+    {
+        "type": "general-shop",
+        "x": 8512,
+        "y": 6209
+    },
+    {
+        "type": "furnace",
+        "x": 8909,
+        "y": 6091
+    },
+    {
+        "type": "anvil",
+        "x": 8444,
+        "y": 6214
+    },
+    {
+        "type": "bed",
+        "x": 8594,
+        "y": 5741
+    },
+    {
+        "type": "dungeon",
+        "x": 8545,
+        "y": 5706
+    },
+    {
+        "type": "dungeon",
+        "x": 8616,
+        "y": 5862
+    },
+    {
+        "type": "dungeon",
+        "x": 8505,
+        "y": 5879
+    },
+    {
+        "type": "dungeon",
+        "x": 8658,
+        "y": 6493
+    },
+    {
+        "type": "altar",
+        "x": 8354,
+        "y": 5926
+    },
+    {
+        "type": "altar",
+        "x": 9001,
+        "y": 6424
+    }
+]

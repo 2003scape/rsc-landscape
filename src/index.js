@@ -1,9 +1,5 @@
-const Landscape = require('./landscape');
-const Tile = require('./tile');
-const overlayColours = require('./overlay-colours');
-const overlays = require('./overlays');
-
-module.exports.Landscape = Landscape;
-module.exports.Tile = Tile;
-module.exports.overlayColours = overlayColours;
-module.exports.overlays = overlays;
+module.exports.Landscape = require('./landscape');
+module.exports.Sector = require('./sector');
+module.exports.Tile = require('./tile');
+module.exports.key = require('../res/key');
+module.exports.tileOverlays = require('../res/tile-overlays');

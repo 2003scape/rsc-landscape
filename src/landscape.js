@@ -14,8 +14,8 @@ class Landscape {
         this.height = MAX_Y_SECTORS;
         this.depth = MAX_PLANES;
 
-        this.minRegionX = null;
-        this.minRegionY = null;
+        this.minRegionX = 48;
+        this.minRegionY = 37;
         this.maxRegionX = null;
         this.maxRegionY = null;
 
@@ -66,9 +66,9 @@ class Landscape {
 
     // populate our internal structures
     parseArchives() {
-        for (let plane = 0; plane < MAX_PLANES; plane+= 1) {
-            for (let y = 37; y < MAX_Y_SECTORS; y+= 1) {
-                for (let x = 48; x < MAX_X_SECTORS; x+= 1) {
+        for (let plane = 0; plane < MAX_PLANES; plane += 1) {
+            for (let y = this.minRegionY; y < MAX_Y_SECTORS; y += 1) {
+                for (let x = this.minRegionX; x < MAX_X_SECTORS; x += 1) {
                     const sector = new Sector({ x, y, plane });
                     const entry = sector.getEntryName();
 
@@ -101,19 +101,11 @@ class Landscape {
                     if (!sector.empty) {
                         this.sectors[x][y][plane] = sector;
 
-                        if (!this.minRegionX || x < this.minRegionX) {
-                            this.minRegionX = x;
-                        }
-
-                        if (!this.minRegionX || x > this.maxRegionX) {
+                        if (x > this.maxRegionX) {
                             this.maxRegionX = x;
                         }
 
-                        if (!this.minRegionY || y < this.minRegiony) {
-                            this.minRegionY = y;
-                        }
-
-                        if (!this.minRegionY || y > this.maxRegionY) {
+                        if (y > this.maxRegionY) {
                             this.maxRegionY = y;
                         }
                     }
@@ -161,11 +153,42 @@ class Landscape {
         return [north, east, south, west];
     }
 
+    // convert game coordinates to tile
+    getTileAtGameCoords(x, y) {
+        let plane = 0;
+
+        if (y >= 0 && y <= 1007) {
+            plane = 0; // overworld
+        } else if (y >= 1007 && y <= 1007 + 943) {
+            plane = 1; // first floor
+            y -= 943;
+        } else if (y >= 1008 + 943 && y <= 1007 + (2 * 943)) {
+            plane = 2; // second floor
+            y -= 943 * 2;
+        } else {
+            plane = 3; // dungeon
+            y -= 943 * 3;
+        }
+
+        const sectorX = Math.floor(x / 48) + this.minRegionX;
+        const sectorY = Math.floor(y / 48) + this.minRegionY;
+
+        const sector = this.sectors[sectorX][sectorY][plane];
+        const tile = sector.tiles[47 - (x % 48)][y % 48];
+
+        return tile;
+    }
+
     async toCanvas(options = {}) {
         const painter = new MapPainter(this, options);
         await painter.draw();
 
         return painter.canvas;
+    }
+
+    toString() {
+        return `[object ${this.constructor.name} ${this.width}x` +
+            `${this.height}x${this.depth}]`;
     }
 }
 

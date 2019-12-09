@@ -1,0 +1,195 @@
+{
+    "1": {
+        "name": "road",
+        "blocked": false,
+        "bridge": false,
+        "indoors": false,
+        "antialias": true,
+        "colour": "rgb(64, 64, 64)"
+    },
+    "2": {
+        "name": "water",
+        "blocked": true,
+        "bridge": false,
+        "indoors": false,
+        "antialias": true,
+        "colour": "rgb(36, 64, 127)"
+    },
+    "3": {
+        "name": "brown_floor",
+        "blocked": false,
+        "bridge": false,
+        "indoors": true,
+        "antialias": false,
+        "colour": "rgb(100, 48, 2)"
+    },
+    "4": {
+        "name": "bridge",
+        "blocked": false,
+        "bridge": true,
+        "indoors": false,
+        "antialias": false,
+        "colour": "rgb(100, 48, 2)"
+    },
+    "5": {
+        "name": "stone_floor",
+        "blocked": false,
+        "bridge": false,
+        "indoors": true,
+        "antialias": false,
+        "colour": "rgb(64, 64, 64)"
+    },
+    "6": {
+        "name": "maroon_floor",
+        "blocked": false,
+        "bridge": false,
+        "indoors": true,
+        "antialias": false,
+        "colour": "rgb(107, 3, 15)"
+    },
+    "7": {
+        "name": "swamp_water",
+        "blocked": true,
+        "bridge": false,
+        "indoors": false,
+        "antialias": true,
+        "colour": "rgb(34, 48, 58)"
+    },
+    "8": {
+        "name": "hole",
+        "blocked": true,
+        "bridge": false,
+        "indoors": false,
+        "antialias": false,
+        "colour": "rgb(0, 0, 0)",
+        "_colour": "rgb(255,0,255)"
+    },
+    "9": {
+        "name": "mountain",
+        "blocked": true,
+        "bridge": false,
+        "indoors": false,
+        "antialias": true,
+        "colour": "rgb(97, 97, 97)"
+    },
+    "10": {
+        "name": "black",
+        "blocked": true,
+        "bridge": false,
+        "indoors": false,
+        "antialias": false,
+        "colour": "rgb(255, 0, 255)"
+    },
+    "11": {
+        "name": "lava",
+        "blocked": true,
+        "bridge": false,
+        "indoors": false,
+        "antialias": true,
+        "colour": "rgb(96, 48, 1)"
+    },
+    "12": {
+        "name": "bridge_2",
+        "blocked": false,
+        "bridge": true,
+        "indoors": false,
+        "antialias": false,
+        "colour": "rgb(100, 48, 2)"
+    },
+    "13": {
+        "name": "blue_floor",
+        "blocked": false,
+        "bridge": false,
+        "indoors": true,
+        "antialias": false,
+        "colour": "rgb(31, 63, 125)"
+    },
+    "14": {
+        "name": "pentagram",
+        "blocked": false,
+        "bridge": false,
+        "indoors": true,
+        "antialias": false,
+        "colour": "rgb(64, 64, 64)"
+    },
+    "15": {
+        "name": "purple_floor",
+        "blocked": false,
+        "bridge": false,
+        "indoors": true,
+        "antialias": false,
+        "colour": "rgb(36, 22, 9)"
+    },
+    "16": {
+        "name": "black_floor",
+        "blocked": false,
+        "bridge": false,
+        "indoors": true,
+        "antialias": false,
+        "colour": "rgb(0, 0, 0)"
+    },
+    "17": {
+        "name": "light_stone_floor",
+        "blocked": false,
+        "bridge": false,
+        "indoors": true,
+        "antialias": false,
+        "colour": "rgb(121, 123, 120)"
+    },
+    "18": {
+        "name": "object_platform",
+        "blocked": false,
+        "bridge": false,
+        "indoors": false,
+        "antialias": false,
+        "colour": "rgb(0, 0, 0)"
+    },
+    "19": {
+        "name": "black_2",
+        "blocked": true,
+        "bridge": false,
+        "indoors": false,
+        "antialias": false,
+        "colour": "rgb(0, 0, 0)"
+    },
+    "20": {
+        "name": "object_platform_2",
+        "blocked": false,
+        "bridge": true,
+        "indoors": false,
+        "antialias": false,
+        "colour": "rgb(0, 0, 0)"
+    },
+    "21": {
+        "name": "log",
+        "blocked": false,
+        "bridge": true,
+        "indoors": false,
+        "antialias": false,
+        "colour": "rgb(0, 0, 0)"
+    },
+    "23": {
+        "name": "sand_floor",
+        "blocked": false,
+        "bridge": false,
+        "indoors": true,
+        "antialias": false,
+        "colour": "rgb(63, 33, 0)"
+    },
+    "24": {
+        "name": "mud_floor",
+        "blocked": false,
+        "bridge": false,
+        "indoors": true,
+        "antialias": false,
+        "colour": "rgb(63, 33, 0)"
+    },
+    "25": {
+        "name": "water_floor",
+        "blocked": false,
+        "bridge": false,
+        "indoors": false,
+        "antialias": false,
+        "colour": "rgb(63, 33, 0)"
+    }
+}

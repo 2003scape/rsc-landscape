@@ -1,13 +1,8 @@
 // paint a 2d map of an individual landscape sector
 
 const chalk = require('chalk');
-const overlayColours = require('./overlay-colours');
-const overlays = require('./overlays');
-const terrainColours = require('./terrain-colours');
 const { createCanvas } = require('canvas');
 const { cssColor, rgb2hex } = require('color-functions');
-
-chalk.level = 3;
 
 // size of a square tile in pixels
 const TILE_SIZE = 3;
@@ -15,24 +10,7 @@ const TILE_SIZE = 3;
 const [NORTH, EAST, SOUTH, WEST] = [0, 1, 2, 3];
 const SURROUNDED = [true, true, true, true];
 
-const OVERLAY_COLOURS = {};
-
-for (const [name, colour] of Object.entries(overlayColours)) {
-    OVERLAY_COLOURS[overlays[name]] = colour;
-}
-
-const FLOOR_TILES = [
-    'BROWN_FLOOR', 'STONE_FLOOR', 'MAROON_FLOOR', 'BLACK_FLOOR','BLUE_FLOOR',
-    'PURPLE_FLOOR', 'LIGHT_STONE_FLOOR', 'SAND_FLOOR', 'MUD_FLOOR'
-].map(name => overlays[name]);
-
-const BRIDGE_TILES = [
-    'BRIDGE', 'BRIDGE_2', 'LOG', 'LOG_2'
-].map(name => overlays[name]);
-
-const ANTIALIAS_OVERLAYS = [
-    'ROAD', 'WATER', 'SWAMP_WATER', 'MOUNTAIN', 'LAVA'
-].map(name => overlays[name]);
+const WALL_COLOUR = 'rgb(97, 97, 97)';
 
 class SectorPainter {
     constructor(sector, options = {}, neighbours = []) {
@@ -49,26 +27,26 @@ class SectorPainter {
 
     // draw a wall from north to south
     drawVerticalWall(x, y) {
-        this.ctx.fillStyle = OVERLAY_COLOURS[9];
+        this.ctx.fillStyle = WALL_COLOUR;
         this.ctx.fillRect(x + 2, y, 1, TILE_SIZE);
     }
 
     // draw a wall wall from east to west
     drawHorizontalWall(x, y) {
-        this.ctx.fillStyle = OVERLAY_COLOURS[9];
+        this.ctx.fillStyle = WALL_COLOUR;
         this.ctx.fillRect(x, y, TILE_SIZE, 1);
     }
 
     // draw a diagonal wall, "/" signifying  northwest to southeast, "\"
     // signifying northeast to southwest
     drawDiagonalWall(direction, x, y) {
+        this.ctx.fillStyle = WALL_COLOUR;
+
         if (direction === '/') {
-            this.ctx.fillStyle = OVERLAY_COLOURS[9];
             this.ctx.fillRect(x + 2, y, 1, 1);
             this.ctx.fillRect(x + 1, y + 1, 1, 1);
             this.ctx.fillRect(x, y + 2, 1, 1);
         } else if (direction === '\\') {
-            this.ctx.fillStyle = OVERLAY_COLOURS[9];
             this.ctx.fillRect(x, y, 1, 1);
             this.ctx.fillRect(x + 1, y + 1, 1, 1);
             this.ctx.fillRect(x + 2, y + 2, 1, 1);
@@ -84,14 +62,8 @@ class SectorPainter {
     // draw an anti-aliased overlay tile on top of a coloured tile, the last
     // argument is an array of booleans describing whether or not each cardinal
     // direction contains a matching overlay
-    drawOverlay(overlay, x, y, [ north, east, south, west ]) {
-        const overlayColour = OVERLAY_COLOURS[overlay];
-
-        if (!overlayColour) {
-            return;
-        }
-
-        this.ctx.fillStyle = overlayColour;
+    drawOverlay(colour, x, y, [ north, east, south, west ]) {
+        this.ctx.fillStyle = colour;
 
         // the order of these matter for accuracy
         if (!north && !east && !south && !west) {
@@ -159,62 +131,69 @@ class SectorPainter {
 
         for (let i = 0; i < this.sector.width; i += 1) {
             for (let j = 0; j < this.sector.height; j += 1) {
-                const tile = this.sector.tiles[i][j];
+                let tile = this.sector.tiles[i][j];
+                let tileDef = tile.getTileDef();
+                let overlay = tile.overlay;
 
                 // TRBL/NESW
                 const neighbours = this.getTileNeighbours(i, j);
 
-                const colour = terrainColours.rgb[tile.colour];
-
-                if (this.sector.plane === 0 || this.sector.plane === 3) {
-                    this.drawTile(colour, x, y);
-                } else {
-                    this.drawTile('#000', x, y);
-                }
-
-                let overlay = tile.overlay;
-                const diagonal = tile.wall.diagonal;
-
                 // add extra bridge tiles on land
-                if (overlay !== overlays.WATER &&
-                    BRIDGE_TILES.indexOf(overlay) === -1) {
+                if (!/^(water|lava)$/.test(tileDef.name) && !tileDef.bridge) {
                     for (const neighbour of neighbours) {
-                        if (neighbour &&
-                            BRIDGE_TILES.indexOf(neighbour.overlay) >= 0) {
+                        if (neighbour && neighbour.getTileDef().bridge) {
                             overlay = neighbour.overlay;
+                            tileDef = neighbour.getTileDef();
                             break;
                         }
                     }
                 }
 
+                const diagonal = tile.wall.diagonal;
+
+                this.drawTile(tile.getTerrainColour(), x, y);
+
                 if (overlay !== 0) {
                     let overlayNeighbours = SURROUNDED.slice();
 
-                    if (diagonal && FLOOR_TILES.indexOf(overlay) > -1) {
+                    if (diagonal && tileDef.indoors) {
+                        // this fixes antialiasing for checkered-floor patterns
                         overlayNeighbours = neighbours.map(neighbour => {
                             return !!neighbour &&
-                                FLOOR_TILES.indexOf(neighbour.overlay) > -1;
+                                neighbour.getTileDef().indoors;
                         });
-                    } else if (diagonal ||
-                        ANTIALIAS_OVERLAYS.indexOf(overlay) > -1) {
+                    } else if (diagonal || tileDef.antialias) {
                         overlayNeighbours = neighbours.map(neighbour => {
                             return !!neighbour && (
-                                neighbour.overlay === overlays.HOLE ||
+                                neighbour.getTileDef().name === 'hole' ||
                                 neighbour.overlay === overlay);
                         });
                     }
 
-                    if (overlay === overlays.WATER) {
-                        // if water is touching a bridge or log, don't antialias
+                    // if water is touching a bridge or log, don't antialias
+                    if (/^(water|lava)$/.test(tileDef.name)) {
                         neighbours.forEach((neighbour, direction) => {
-                            if (neighbour &&
-                                BRIDGE_TILES.indexOf(neighbour.overlay) >= 0) {
+                            if (neighbour && neighbour.getTileDef().bridge) {
                                 overlayNeighbours[direction] = true;
                             }
                         });
                     }
 
-                    this.drawOverlay(overlay, x, y, overlayNeighbours);
+                    // fix diagonal tiles surrounded by different overlays
+                    if (diagonal) {
+                        if (!overlayNeighbours[SOUTH] && neighbours[SOUTH]) {
+                            this.drawTile(
+                                neighbours[SOUTH].getTileDef().colour,
+                                x, y);
+                        } else if (!overlayNeighbours[NORTH] &&
+                            neighbours[NORTH]) {
+                            this.drawTile(
+                                neighbours[NORTH].getTileDef().colour,
+                                x, y);
+                        }
+                    }
+
+                    this.drawOverlay(tileDef.colour, x, y, overlayNeighbours);
                 }
 
                 if (diagonal) {
@@ -229,10 +208,6 @@ class SectorPainter {
                     this.drawHorizontalWall(x, y);
                 }
 
-                if (diagonal === 48020) {
-                    this.drawTile('#f0f', x, y);
-                }
-
                 y += TILE_SIZE;
             }
 
@@ -242,7 +217,11 @@ class SectorPainter {
     }
 
     // draw the map for in characters for terminals
-    write() {
+    write(colourLevel = -1) {
+        if (colourLevel !== -1) {
+            chalk.level = colourLevel;
+        }
+
         const output = [];
 
         for (let tileY = 0; tileY < this.sector.height; tileY++) {
@@ -250,10 +229,10 @@ class SectorPainter {
 
             for (let tileX = 0; tileX < this.sector.width; tileX++) {
                 const tile = this.sector.tiles[tileX][tileY];
-                let colour = terrainColours.rgb[tile.colour];
+                let colour = tile.getTerrainColour();
 
                 if (tile.overlay) {
-                    const {r, g, b} = cssColor(OVERLAY_COLOURS[tile.overlay]);
+                    const {r, g, b} = cssColor(tile.getTileDef().colour);
                     colour = rgb2hex(r, g, b);
                 }
 

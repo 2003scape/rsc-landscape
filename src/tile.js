@@ -1,6 +1,9 @@
-/*const BLOCKED_OVERLAYS = [
-    'WATER', 'SWAMP_WATER', 'MOUNTAIN', 'BLACK', 'LAVA', 'BLACK_2'
-];*/
+const terrainColours = require('./terrain-colours');
+const tileOverlays = require('../res/tile-overlays');
+
+const BLACK = 'rgb(0, 0, 0)';
+
+const PLANE_HEIGHT = 944;
 
 class Tile {
     constructor(tile) {
@@ -56,6 +59,31 @@ class Tile {
         };
     }
 
+    // return the map colour for this tile
+    getTerrainColour() {
+        const plane = this.sector.plane;
+
+        if (plane === 0 || plane === 3) {
+            return terrainColours.rgb[this.colour];
+        } else {
+            return BLACK;
+        }
+    }
+
+    // get the overlay tile def
+    getTileDef() {
+        return tileOverlays[this.overlay] || {};
+    }
+
+    // return the {x, y} the game would use for this tile
+    getGameCoords() {
+        const x = this.x + (this.sector.x - 48) * 48;
+        const y = ((((this.sector.y - 36) * 48) + this.y + 96) - 144) +
+            (this.sector.plane * PLANE_HEIGHT);
+
+        return { x, y };
+    }
+
     toJSON() {
         return {
             colour: this.colour,
@@ -65,6 +93,11 @@ class Tile {
             wall: this.wall,
             objectId: this.objectId
         };
+    }
+
+    toString() {
+        return `[object ${this.constructor.name} ` +
+            `${this.sector.getEntryName()} ${this.index}]`;
     }
 }
 

@@ -51,11 +51,19 @@ yargs
     .version(pkg.version)
     .command(
         'generate-map <archives..>',
-        'generate a world map image',
+        'generate world map png',
         yargs => {
             yargs.positional('archives', {
                 description: 'landscape and map .jag and .mem archives',
                 type: 'array'
+            });
+
+            yargs.option('plane', {
+                alias: 'z',
+                description: 'change map depth (0 = overworld, 1 = upstairs, ' +
+                    'etc.)',
+                type: 'number',
+                default: 0
             });
 
             yargs.option('objects', {
@@ -103,6 +111,8 @@ yargs
                     }
                 }
 
+                options.plane = argv.plane;
+
                 const canvas = await landscape.toCanvas(options);
                 await fs.writeFile(argv.output, canvas.toBuffer());
             } catch (e) {
@@ -121,7 +131,7 @@ yargs
 
             yargs.option('pretty', {
                 alias: 'p',
-                description: 'pretty-print the JSON files',
+                description: 'pretty-print JSON files',
                 type: 'boolean',
                 default: false
             });
@@ -157,7 +167,7 @@ yargs
         })
     .command(
         'pack-json <directory>',
-        'generate land and maps archives from a directory of JSON files',
+        'generate land and maps archives from directory of JSON files',
         yargs => {
             yargs.positional('directory', {
                 description: 'directory of JSON sectors',
@@ -230,6 +240,51 @@ yargs
             } catch (e) {
                 console.error(e);
                 process.exitCode = 1;
+            }
+        })
+    .command(
+        'print-sector <archives..>',
+        'print coloured sector to terminal',
+        yargs => {
+            yargs.positional('archives', {
+                description: 'landscape and map .jag and .mem archives',
+                type: 'array'
+            });
+
+            yargs.option('x', {
+                type: 'number',
+                default: 50
+            });
+
+            yargs.option('y', {
+                type: 'number',
+                default: 50
+            });
+
+            yargs.option('plane', {
+                alias: 'z',
+                type: 'number',
+                default: 0
+            });
+
+            yargs.option('colours', {
+                alias: 'c',
+                description: 'amount of colours to use, or -1 to autodetect',
+                type: 'number',
+                default: -1
+            });
+        },
+        async argv => {
+            const landscape = new Landscape();
+
+            try {
+                await parseArchives(argv, landscape);
+                const sector = landscape.sectors[argv.x][argv.y][argv.plane];
+                process.stdout.write(sector.toString(true, argv.colours) +
+                    '\n');
+            } catch (e) {
+                process.errorCode = 1;
+                console.error(e);
             }
         })
     .demandCommand()

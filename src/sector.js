@@ -158,41 +158,37 @@ class Sector {
             }
         }
 
-        require('fs').writeFileSync(
-            './compressed-elevation.json',
-            JSON.stringify(Array.from(mapData).slice(0, offset).map(i => i&255), null, '    '));
-
         lastVal = 64;
 
         for (let tileY = 0; tileY < SECTOR_HEIGHT; tileY++) {
-			for (let tileX = 0; tileX < SECTOR_WIDTH; tileX++) {
+            for (let tileX = 0; tileX < SECTOR_WIDTH; tileX++) {
                 const index = tileX * SECTOR_WIDTH + tileY;
 
-				lastVal = this.terrainHeight[index] + (lastVal & 0x7f);
-				this.terrainHeight[index] = (lastVal * 2) & 0xff;
+                lastVal = this.terrainHeight[index] + (lastVal & 0x7f);
+                this.terrainHeight[index] = (lastVal * 2) & 0xff;
 
                 if (this.terrainHeight[index] > 0) {
                     this.empty = false;
                 }
-			}
-		}
+            }
+        }
 
         lastVal = 0;
 
-		for (let tile = 0; tile < MAX_TILES; ) {
-			let val = mapData[offset++] & 0xff;
+        for (let tile = 0; tile < MAX_TILES; ) {
+            let val = mapData[offset++] & 0xff;
 
-			if (val < 128) {
-				this.terrainColour[tile++] = val & 0xff;
-				lastVal = val;
-			}
+            if (val < 128) {
+                this.terrainColour[tile++] = val & 0xff;
+                lastVal = val;
+            }
 
-			if (val >= 128) {
-				for (let i = 0; i < val - 128; i++) {
-					this.terrainColour[tile++] = lastVal & 0xff;
-				}
-			}
-		}
+            if (val >= 128) {
+                for (let i = 0; i < val - 128; i++) {
+                    this.terrainColour[tile++] = lastVal & 0xff;
+                }
+            }
+        }
 
         lastVal = 35;
 
@@ -213,7 +209,7 @@ class Sector {
 
     // parse the .dat files in the map archives
     parseDat(mapData) {
-		let offset = 0;
+        let offset = 0;
 
         for (let tile = 0; tile < MAX_TILES; tile++) {
             this.wallsVertical[tile] = mapData[offset++] & 0xff;
@@ -335,13 +331,6 @@ class Sector {
             for (let tileX = 0; tileX < SECTOR_WIDTH; tileX++) {
                 const index = tileX * SECTOR_WIDTH + tileY;
                 const tile = this.tiles[SECTOR_WIDTH - 1 - tileX][tileY];
-
-                if (!tile) {
-                    console.log(this.tiles[tileX], tileX, tileY);
-                    console.log('tile not found');
-                    process.exit(1);
-                }
-
                 const diagonal = tile.wall ? tile.wall.diagonal : null;
 
                 this.terrainHeight[index] = tile.elevation;
@@ -431,11 +420,7 @@ class Sector {
                 return val;
             }));
 
-        if (empty) {
-            return null;
-        }
-
-        return compressedObjects;
+        return empty ? null : compressedObjects;
     }
 
     toCanvas(options = {}, neighbours = []) {
@@ -445,14 +430,14 @@ class Sector {
         return painter.canvas;
     }
 
-    toString(terminal = false) {
+    toString(terminal = false, colourLevel = -1) {
         if (!terminal) {
-            return `[${this.constructor.name} ${this.toEntryName()} ` +
+            return `[object ${this.constructor.name} ${this.getEntryName()} ` +
                 `${this.width}x${this.height}]`;
         }
 
         const painter = new SectorPainter(this);
-        return painter.write();
+        return painter.write(colourLevel);
     }
 
     toJSON() {

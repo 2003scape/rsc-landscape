@@ -1,0 +1,797 @@
+[
+    {
+        "text": "Swamp",
+        "x": 7156,
+        "y": 6632,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Gnome Ball\nField",
+        "x": 7113,
+        "y": 6662,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Grand tree",
+        "x": 7220,
+        "y": 6681,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Tree Gnome\nStronghold",
+        "x": 7189,
+        "y": 6731,
+        "size": 12,
+        "align": "left",
+        "bold": true
+    },
+    {
+        "text": "Baxtorian\nFalls",
+        "x": 7390,
+        "y": 6734,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Agility\ntraining\narea",
+        "x": 7274,
+        "y": 6810,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Underground\npass",
+        "x": 7173,
+        "y": 7061,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Combat\ntraining\ncamp",
+        "x": 7354,
+        "y": 6924,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "West\nArdougne",
+        "x": 7341,
+        "y": 7046,
+        "size": 12,
+        "align": "center",
+        "bold": true
+    },
+    {
+        "text": "Battle field",
+        "x": 7382,
+        "y": 7282,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Tree Gnome\nVillage",
+        "x": 7384,
+        "y": 7400,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Coal\ntrucks",
+        "x": 7555,
+        "y": 6644,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Fishing\nGuild",
+        "x": 7576,
+        "y": 6868,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Zoo",
+        "x": 7613,
+        "y": 7168,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Fight\nArena",
+        "x": 7520,
+        "y": 7432,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Yanille",
+        "x": 7501,
+        "y": 7585,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Wizards\nGuild",
+        "x": 7528,
+        "y": 7604,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "McGrubor's\nWood",
+        "x": 7674,
+        "y": 6673,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Hemenster",
+        "x": 7631,
+        "y": 6801,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Kingdom of\nKandarin",
+        "x": 7705,
+        "y": 6821,
+        "size": 12,
+        "align": "center",
+        "bold": true,
+        "colour": "rgb(254, 165, 0)"
+    },
+    {
+        "text": "Windmill",
+        "x": 7640,
+        "y": 6923,
+        "size": 8,
+        "align": "left"
+    },
+    {
+        "text": "East\nArdougne",
+        "x": 7628,
+        "y": 7050,
+        "size": 12,
+        "align": "center",
+        "bold": true
+    },
+    {
+        "text": "Necromancer",
+        "x": 7653,
+        "y": 7269,
+        "size": 8,
+        "align": "left"
+    },
+    {
+        "text": "Port\nKhazard",
+        "x": 7712,
+        "y": 7407,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Seer's\nVillage",
+        "x": 7817,
+        "y": 6695,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Sorcerors\nTower",
+        "x": 7823,
+        "y": 6834,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Camelot\nCastle",
+        "x": 7934,
+        "y": 6657,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Flax",
+        "x": 7891,
+        "y": 6783,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Beehives",
+        "x": 7932,
+        "y": 6784,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Keep\nLeFaye",
+        "x": 7964,
+        "y": 6877,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Barbarian\nOutpost",
+        "x": 7882,
+        "y": 6959,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Agility training\narea",
+        "x": 7874,
+        "y": 7014,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Fishing\nPlatform",
+        "x": 7897,
+        "y": 7171,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Brimhaven",
+        "x": 7964,
+        "y": 7392,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Tai Bwo Wannai",
+        "x": 7973,
+        "y": 7592,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "White Wolf\nMountain",
+        "x": 8101,
+        "y": 6682,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Catherby",
+        "x": 8065,
+        "y": 6808,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Entrana",
+        "x": 8075,
+        "y": 6944,
+        "size": 12,
+        "align": "center",
+        "bold": true,
+        "colour": "rgb(254, 165, 0)"
+    },
+    {
+        "text": "Crandor",
+        "x": 8073,
+        "y": 7189,
+        "size": 12,
+        "align": "center",
+        "bold": true,
+        "colour": "rgb(254, 165, 0)"
+    },
+    {
+        "text": "Karamja",
+        "x": 8177,
+        "y": 7425,
+        "size": 12,
+        "align": "center",
+        "bold": true,
+        "colour": "rgb(254, 165, 0)"
+    },
+    {
+        "text": "Ship yard",
+        "x": 8140,
+        "y": 7566,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Hero's\nGuild",
+        "x": 8231,
+        "y": 6649,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Druid's\nCircle",
+        "x": 8254,
+        "y": 6700,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Taverly",
+        "x": 8224,
+        "y": 6821,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Dark Wizards\nTower",
+        "x": 8238,
+        "y": 7031,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Make over\nmage",
+        "x": 8249,
+        "y": 7070,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Crafting\nGuild",
+        "x": 8294,
+        "y": 7136,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Melzar's\nMaze",
+        "x": 8310,
+        "y": 7215,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Chaos\nTemple",
+        "x": 8365,
+        "y": 6626,
+        "size": 8,
+        "align": "center"
+    },
+    {
+        "text": "Goblin\nVillage",
+        "x": 8356,
+        "y": 6682,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "White Knights",
+        "x": 8392,
+        "y": 7024,
+        "size": 8,
+        "align": "center"
+    },
+    {
+        "text": "Rimmington",
+        "x": 8365,
+        "y": 7285,
+        "size": 11,
+        "align": "center"
+    },
+    {
+        "text": "Black\nKnights",
+        "x": 8513,
+        "y": 6633,
+        "size": 8,
+        "align": "center"
+    },
+    {
+        "text": "Monastary",
+        "x": 8566,
+        "y": 6713,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Ice\nMountain",
+        "x": 8462,
+        "y": 6722,
+        "size": 12,
+        "align": "center",
+        "bold": true
+    },
+    {
+        "text": "Dwarven\nMine",
+        "x": 8498,
+        "y": 6820,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Park",
+        "x": 8477,
+        "y": 6936,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Falador",
+        "x": 8424,
+        "y": 6981,
+        "size": 12,
+        "align": "center",
+        "bold": true
+    },
+    {
+        "text": "Mining\nGuild",
+        "x": 8514,
+        "y": 7013,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Kingdom of\nAsgarnia",
+        "x": 8433,
+        "y": 7081,
+        "size": 12,
+        "align": "center",
+        "bold": true,
+        "colour": "rgb(254, 165, 0)"
+    },
+    {
+        "text": "Port\nSarim",
+        "x": 8567,
+        "y": 7264,
+        "size": 12,
+        "align": "center"
+    },
+    {
+        "text": "Edgeville",
+        "x": 8731,
+        "y": 6688,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Barbarian\nVillage",
+        "x": 8666,
+        "y": 6863,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Draynor Manor",
+        "x": 8677,
+        "y": 7004,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Draynor\nVillage",
+        "x": 8721,
+        "y": 7189,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Market",
+        "x": 8667,
+        "y": 7218,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Jail",
+        "x": 8752,
+        "y": 7242,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Wizard's\nTower",
+        "x": 8716,
+        "y": 7396,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Tutorial\nIsland",
+        "x": 8704,
+        "y": 7537,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Cooks\nGuild",
+        "x": 8817,
+        "y": 6764,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Champions\nGuild",
+        "x": 8867,
+        "y": 6985,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Windmill",
+        "x": 8842,
+        "y": 7126,
+        "size": 8,
+        "align": "center"
+    },
+    {
+        "text": "Palace",
+        "x": 8948,
+        "y": 6734,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Varrock",
+        "x": 8940,
+        "y": 6854,
+        "size": 12,
+        "align": "center",
+        "bold": true
+    },
+    {
+        "text": "Kingdom of\nMisthalin",
+        "x": 8933,
+        "y": 7058,
+        "size": 12,
+        "align": "center",
+        "bold": true,
+        "colour": "rgb(254, 165, 0)"
+    },
+    {
+        "text": "Lumbridge",
+        "x": 8954,
+        "y": 7292,
+        "size": 11,
+        "align": "center"
+    },
+    {
+        "text": "Toll\ngate",
+        "x": 9075,
+        "y": 7261,
+        "size": 9,
+        "align": "center"
+    },
+    {
+        "text": "Al Kharid",
+        "x": 9111,
+        "y": 7385,
+        "size": 12,
+        "align": "center",
+        "bold": true
+    },
+    {
+        "text": "Dig Site",
+        "x": 9276,
+        "y": 6860,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Exam Centre",
+        "x": 9236,
+        "y": 7019,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Shantay Pass",
+        "x": 9130,
+        "y": 7496,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Bedabin\nCamp",
+        "x": 8818,
+        "y": 7712,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Kharidian\nDesert",
+        "x": 9036,
+        "y": 7616,
+        "size": 12,
+        "align": "center",
+        "bold": true,
+        "colour": "rgb(254, 165, 0)"
+    },
+    {
+        "text": "Desert Mining\nCamp",
+        "x": 9062,
+        "y": 7732,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Lumber\nMill",
+        "x": 9152,
+        "y": 6638,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Legends'\nGuild",
+        "x": 7796,
+        "y": 6930,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Sinclair\nMansion",
+        "x": 7862,
+        "y": 6500,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Gu'Tanoth",
+        "x": 7386,
+        "y": 7676,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Feldip\nHills",
+        "x": 7468,
+        "y": 7814,
+        "size": 12,
+        "align": "center",
+        "bold": true,
+        "colour": "rgb(254, 165, 0)"
+    },
+    {
+        "text": "Observatory",
+        "x": 7184,
+        "y": 7444,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Shilo Village",
+        "x": 8103,
+        "y": 7822,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Kharazi Jungle",
+        "x": 8082,
+        "y": 7970,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Chaos\nTemple",
+        "x": 8988,
+        "y": 6396,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Dark Warriors'\nFortress",
+        "x": 8550,
+        "y": 6376,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Bandit\nCamp",
+        "x": 8524,
+        "y": 6229,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Ruins",
+        "x": 8370,
+        "y": 6214,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Graveyard",
+        "x": 8800,
+        "y": 6274,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Bone Yard",
+        "x": 8986,
+        "y": 6110,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Ruins",
+        "x": 8856,
+        "y": 6094,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Red Dragon\nIsle",
+        "x": 8880,
+        "y": 5924,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Lava Maze",
+        "x": 8606,
+        "y": 5885,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Demonic\nRuins",
+        "x": 9086,
+        "y": 5804,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Agility\ntraining\narea",
+        "x": 8455,
+        "y": 5628,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Pirates'\nHideout",
+        "x": 8540,
+        "y": 5644,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Frozen Waste\nPlateau",
+        "x": 8334,
+        "y": 5718,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Mage Arena",
+        "x": 8640,
+        "y": 5714,
+        "size": 10,
+        "align": "left"
+    },
+    {
+        "text": "Deserted\nKeep",
+        "x": 8792,
+        "y": 5680,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Scorpion\nPit",
+        "x": 8948,
+        "y": 5664,
+        "size": 10,
+        "align": "center"
+    },
+    {
+        "text": "Rouges'\nHouse",
+        "x": 9108,
+        "y": 5646,
+        "size": 8,
+        "align": "center"
+    },
+    {
+        "text": "The Wilderness",
+        "x": 8713,
+        "y": 6020,
+        "size": 14,
+        "align": "left",
+        "bold": true,
+        "colour": "rgb(254, 165, 0)"
+    }
+]

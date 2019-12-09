@@ -20,22 +20,28 @@ digsite, shilo village, etc.).
 
 ## install
 
-    $ npm install @2003scape/rsc-landscape
+    $ npm install @2003scape/rsc-landscape # -g for CLI program
 
 ## cli usage
 ```
 rsc-landscape <command>
 
 Commands:
-  rsc-landscape generate-map <archives>  generate a world map image
-  rsc-landscape dump-json <archives>     dump JSON files of each sector
-  rsc-landscape pack-json <directory>    generate land and maps archives from a
-                                         directory of JSON files
+  rsc-landscape generate-map <archives..>  generate world map png
+  rsc-landscape dump-json <archives..>     dump JSON files of each sector
+  rsc-landscape pack-json <directory>      generate land and maps archives from
+                                           directory of JSON files
+  rsc-landscape print-sector <archives..>  print coloured sector to terminal
 
 Options:
   --help     Show help                                                 [boolean]
   --version  Show version number                                       [boolean]
 ```
+
+    $ rsc-landscape generate-map land* maps* -O object-locs.json \
+        -p map-points.json -l map-labels.json # generate worldmap.png
+    $ rsc-landscape generate-map land* maps* --plane 3 -o dungeons.png
+    $ rsc-landscape print-sector land* maps* -x 50 -y 50 -z 0 -c 2 # lumbridge
 
 ## example
 ```javascript
@@ -56,7 +62,7 @@ process.stdout.write(lumbridge.toString(true));
 fs.writeFileSync(`./sector-lumbridge.png`, lumbridge.toCanvas().toBuffer());
 
 (async () => {
-    fs.writeFileSync(`./worldmap.png`, (await landscape.toCanvas({
+    fs.writeFileSync('./worldmap.png', (await landscape.toCanvas({
         points: require('./map-points.json'),
         objects: require('./object-locs.json'),
         labels: require('./map-labels.json')
@@ -66,46 +72,43 @@ fs.writeFileSync(`./sector-lumbridge.png`, lumbridge.toCanvas().toBuffer());
 
 ## file formats
 the runescape classic world is separated into sectors, each containing 48x48
-(2304) tiles. each sector has at least 1 file associated with it:
-* a `.hei` file in the *land* archive which stores the elevation and colour of
-each tile
-* a `.dat` file in the *maps* archive which stores the wall and object direction
-of each tile
-* an optional `.loc` file in the *maps* archive which stores object IDs (used
-for the login screen previews)
+(2304) tiles.
+overworld and dungeon sectors contain both a `.hei` and `.dat` file, sectors
+upstairs only contain `.dat` files, and any sector with object locations will
+have a `.loc` file.
+* `.hei` file in *land* archive which stores elevation and colour of tiles
+* `.dat` file in *maps* archive which stores walls and object direction of tiles
+* `.loc` file in the *maps* archive which stores object IDs (used for the login
+screen previews)
 
 ## api
 ### .terrainColours.integer
-array of the original, undarkened 256 colours the client uses for each tile.
+array of original, undarkened 256 colours client uses to colour tiles.
 
 ### .terrainColours.rgb
 array of 256 map colours used for each tile, darkened by 50% and converted to
 `rgb(r, g, b)` format.
 
-### .overlays
-map of overlay names to overlay IDs.
-
-### .overlayColours
-map of overlay names corresponding to the colour that should be used to
-represent it on a map.
+### .tileOverlays
+map of IDs to tile overlay information.
 
 ### tile = new Tile({ sector, x, y, ... })
-create a new sector tile. accepts all of the properties below in object.
+create new sector tile. accepts all of the properties listed below.
 
 ### tile.colour
 number from 0-255 corresponding to colour in `.terrainColours`.
 
 ### tile.elevation
-number from 0-255 describing the height of the tile.
+number from 0-255 describing height of tile.
 
 ### tile.direction
-number from 0-6 describing the direction objects should face on this tile.
+number from 0-6 describing direction objects should face on tile.
 
 ### tile.overlay
-overlay type index. the corresponding names are stored in `.overlays`.
+overlay type index. corresponding names are stored in `.overlays`.
 
 ### tile.wall
-object with the following potential properties:
+object with following potential properties:
 
 ```javascript
 {
@@ -120,22 +123,42 @@ object with the following potential properties:
 ```
 
 ### tile.objectId
-store an object here for the login screen previews.
+store object here for login screen previews.
 
 ### tile.populate()
 read buffers from tile's sector and populate its properties.
 
+### tile.getTerrainColour()
+return base colour of this tile for maps.
+
+### tile.getTileDef()
+return  object describing attributes of tile's overlay (from
+`./res/tile-overlays.json`):
+```javascript
+{
+    name: 'road',
+    blocked: false,
+    bridge: false,
+    indoors: false,
+    antialias: true,
+    colour: 'rgb(64, 64, 64)'
+}
+```
+
+### tile.getGameCoords()
+return `{ x, y }` game uses for this tile.
+
 ### sector = new Sector({ x, y, plane, members?, tiles? })
-create a new sector instance.
+create new sector instance.
 
 ### sector.members
-should this be stored in the `.jag` or `.mem`?
+store in `.jag` or `.mem` file?
 
 ### sector.width
-amount of tiles on the x axis (48).
+amount of tiles on x axis (48).
 
 ### sector.height
-amount of tiles on the y axis (48).
+amount of tiles on y axis (48).
 
 ### sector.terrainHeight
 ### sector.terrainColour
@@ -146,7 +169,7 @@ amount of tiles on the y axis (48).
 ### sector.tileDirection
 Int8Array buffers populated from archive files with `sector.parse*` or from
 sector's tile objects with `sector.populateBuffers()`. these buffers are
-encoded + compressed into final file buffers.
+encoded + compressed into archives.
 
 ### sector.wallsDiagonal
 Int32Array buffer, similar to above but 32-bit to store values > 255 (
@@ -195,15 +218,19 @@ generation does this automatically).
 in node, you can turn this into a PNG
 with [`.toBuffer()`](https://github.com/Automattic/node-canvas#canvastobuffer).
 
-### sector.toString(terminal = false)
+### sector.toString(terminal = false, colourLevel = -1)
 if `terminal` is true, return a nethack-esque terminal rendering of the sector:
 
 ![](./doc/terminal.png?raw=true)
 
+`colourLevel` describes the
+[chalk level of colours to use](https://github.com/chalk/chalk#chalklevel).
+`-1` automatically detects the maximum support.
+
 ...otherwise just return the name and size of the sector.
 
 ### landscape = new Landscape()
-generate a new landscape (de)serializer instance.
+create new landscape (de)serializer instance.
 
 ### landscape.loadJag(landBuffer, mapBuffer)
 ### landscape.loadMem(landBuffer, mapBuffer)
@@ -214,10 +241,13 @@ prepare `.jag` and `.mem` buffers to be parsed. any sectors loaded with
 populate `landscape.sectors` with loaded buffers.
 
 ### \*landscape.getPopulatedSectors()
-return an iterator of all the non-empty sectors.
+return iterator of all the non-empty sectors.
 
 ### landscape.getSectorNeighbours(x, y, plane)
 return neighbours to a sector position as `[north, east, south, west]`.
+
+### landscape.getTileAtGameCoords(x, y)
+get the tile at coordinates used in game.
 
 ### async landscape.toCanvas({ objects, points, labels })
 create a world map image from all of the non-empty sectors.
@@ -248,9 +278,9 @@ each point image is 15x15.
     text: 'label\nfor\nsomething',
     x, y,
     size: 10, // 8 is the smallest in use, while 14 is the largest
-    align: 'center',
+    align: 'center' || 'left',
     bold: true || undefined,
-    colour: 'rgb(254, 165, 0)' || undefined
+    colour: 'rgb(254, 165, 0)' || '#ff00ff' || undefined
 }
 ```
 
