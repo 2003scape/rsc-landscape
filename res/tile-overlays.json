@@ -61,8 +61,7 @@
         "bridge": false,
         "indoors": false,
         "antialias": false,
-        "colour": "rgb(0, 0, 0)",
-        "_colour": "rgb(255,0,255)"
+        "colour": "rgb(0, 0, 0)"
     },
     "9": {
         "name": "mountain",
