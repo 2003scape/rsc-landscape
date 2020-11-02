@@ -28,7 +28,6 @@ class MapPainter {
         this.landscape = landscape;
 
         this.options = {};
-        this.scale = isNaN(+options.scale) ? 1 : +options.scale;
         this.points = options.points && options.points.length ?
             options.points : [];
         this.objects = options.objects && options.objects.length ?
@@ -60,7 +59,6 @@ class MapPainter {
         this.yOffset =
             (this.plane * this.sectorHeight * TILE_SIZE * (maxY - minY)) +
             (this.plane * 240);
-
     }
 
     // load the key/legend images for points of interest
@@ -103,12 +101,6 @@ class MapPainter {
                     const sectorCanvas = sector.toCanvas(this.options,
                         this.landscape.getSectorNeighbours(i, j, this.plane));
                     this.ctx.drawImage(sectorCanvas, x, y);
-
-                    /*const text = `${sector.x},${sector.y},${sector.plane}`;
-                    this.ctx.fillStyle = '#000';
-                    this.ctx.fillText(text, x + 2, y + 2);
-                    this.ctx.fillStyle = '#fff';
-                    this.ctx.fillText(text, x + 3, y + 3);*/
                 }
 
                 y += this.sectorHeight * TILE_SIZE;
@@ -121,13 +113,10 @@ class MapPainter {
 
     // draw a + for each game object (and make them green if they're trees)
     drawObjects() {
-        const maxY = this.landscape.maxRegionY;
-        const minY = this.landscape.minRegionY;
-
         for (let { id, position: [x, y]} of this.objects) {
-            x *= 3;
+            x *= TILE_SIZE;
             x = this.imageWidth - x - 2;
-            y *= 3;
+            y *= TILE_SIZE;
             y -= 1;
 
             y -= this.yOffset;

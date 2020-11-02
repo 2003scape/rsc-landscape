@@ -24,6 +24,7 @@ async function parseArchives(argv, landscape) {
     }
 
     if (!(landMem && mapsMem) && !(landJag && mapsJag)) {
+        process.exitCode = 1;
         console.error('provide at least one maps and land archive ' +
             'combination');
         return;
@@ -116,8 +117,8 @@ yargs
                 const canvas = await landscape.toCanvas(options);
                 await fs.writeFile(argv.output, canvas.toBuffer());
             } catch (e) {
-                console.error(e);
                 process.exitCode = 1;
+                console.error(e);
             }
         })
     .command(
@@ -283,7 +284,7 @@ yargs
                 process.stdout.write(sector.toString(true, argv.colours) +
                     '\n');
             } catch (e) {
-                process.errorCode = 1;
+                process.exitCode = 1;
                 console.error(e);
             }
         })

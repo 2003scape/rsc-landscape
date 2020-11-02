@@ -1,6 +1,6 @@
 {
   "name": "@2003scape/rsc-landscape",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "(de)serialize runescape classic landscape files",
   "main": "./src/index.js",
   "bin": {
@@ -25,11 +25,11 @@
   },
   "homepage": "https://github.com/2003scape/rsc-landscape#readme",
   "dependencies": {
-    "@2003scape/rsc-archiver": "^1.1.0",
-    "canvas": "^2.6.0",
-    "chalk": "^3.0.0",
+    "@2003scape/rsc-archiver": "^1.1.1",
+    "canvas": "^2.6.1",
+    "chalk": "^4.1.0",
     "color-functions": "^3.0.1",
     "mkdirp-promise": "^5.0.1",
-    "yargs": "^15.0.2"
+    "yargs": "^16.1.0"
   }
 }

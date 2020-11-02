@@ -85,7 +85,7 @@ upstairs only contain `.dat` files, and any sector with object locations will
 have a `.loc` file.
 * `.hei` file in *land* archive which stores elevation and colour of tiles
 * `.dat` file in *maps* archive which stores walls and object direction of tiles
-* `.loc` file in the *maps* archive which stores object IDs (used for the login
+* `.loc` file in *maps* archive which stores object IDs (used for the login
 screen previews)
 
 ## api

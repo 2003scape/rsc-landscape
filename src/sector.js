@@ -437,6 +437,7 @@ class Sector {
         }
 
         const painter = new SectorPainter(this);
+
         return painter.write(colourLevel);
     }
 
