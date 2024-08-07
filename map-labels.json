@@ -674,7 +674,7 @@
         "align": "center"
     },
     {
-        "text": "Dark Warriors'\nFortress",
+        "text": "Dark Warriors'\nCastle",
         "x": 8550,
         "y": 6376,
         "size": 10,
@@ -688,7 +688,7 @@
         "align": "center"
     },
     {
-        "text": "Ruins",
+        "text": "Overgrown\nvillage",
         "x": 8370,
         "y": 6214,
         "size": 10,
@@ -744,14 +744,14 @@
         "align": "center"
     },
     {
-        "text": "Pirates'\nHideout",
+        "text": "Pirate\nHall",
         "x": 8540,
         "y": 5644,
         "size": 10,
         "align": "center"
     },
     {
-        "text": "Frozen Waste\nPlateau",
+        "text": "Ice\nPlateau",
         "x": 8334,
         "y": 5718,
         "size": 10,
@@ -772,7 +772,7 @@
         "align": "center"
     },
     {
-        "text": "Scorpion\nPit",
+        "text": "Scorpion\nRavine",
         "x": 8948,
         "y": 5664,
         "size": 10,
