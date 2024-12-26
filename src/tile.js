@@ -18,31 +18,40 @@ class Tile {
         this.direction = tile.direction || 0;
         this.overlay = tile.overlay || 0;
         this.wall = {
-            diagonal: tile.wall ? (tile.wall.diagonal || null) : null,
-            horizontal: tile.wall ? (tile.wall.horizontal || null) : null,
-            roof: tile.wall ? (tile.wall.roof || null) : null,
-            vertical: tile.wall ? (tile.wall.vertical || null) : null
+            diagonal: tile.wall ? tile.wall.diagonal || null : null,
+            horizontal: tile.wall ? tile.wall.horizontal || null : null,
+            roof: tile.wall ? tile.wall.roof || null : null,
+            vertical: tile.wall ? tile.wall.vertical || null : null
         };
-        this.objectId = tile.objectId || null;
+        this.objectId =
+            typeof tile.objectId === 'undefined' ? null : tile.objectId;
+        this.itemId = typeof tile.itemId === 'undefined' ? null : tile.itemId;
+        this.npcId = typeof tile.npcId === 'undefined' ? null : tile.npcId;
     }
 
     // read the appropriate buffers in Sector and set our internal variables
     populate() {
         let diagonal = this.sector.wallsDiagonal[this.index];
 
-        if (diagonal > 0 && diagonal < 12000) {
-            diagonal = {
-                direction: '/',
-                overlay: diagonal
-            };
-        } else if (diagonal >= 12000 && diagonal < 48000) {
+        if (diagonal > 48000) {
+            this.objectId = diagonal - 48001;
+            diagonal = null;
+        } else if (diagonal > 36000) {
+            this.itemId = diagonal - 36001;
+            diagonal = null;
+        } else if (diagonal > 24000) {
+            this.npcId = diagonal - 24001;
+            diagonal = null;
+        } else if (diagonal > 12000) {
             diagonal = {
                 direction: '\\',
                 overlay: diagonal - 12000
             };
-        } else if (diagonal >= 48000) {
-            this.objectId = diagonal - 48001;
-            diagonal = null;
+        } else if (diagonal > 0) {
+            diagonal = {
+                direction: '/',
+                overlay: diagonal
+            };
         } else {
             diagonal = null;
         }
@@ -78,8 +87,12 @@ class Tile {
     // return the {x, y} the game would use for this tile
     getGameCoords() {
         const x = this.x + (this.sector.x - 48) * 48;
-        const y = ((((this.sector.y - 36) * 48) + this.y + 96) - 144) +
-            (this.sector.plane * PLANE_HEIGHT);
+        const y =
+            (this.sector.y - 36) * 48 +
+            this.y +
+            96 -
+            144 +
+            this.sector.plane * PLANE_HEIGHT;
 
         return { x, y };
     }
@@ -91,13 +104,17 @@ class Tile {
             direction: this.direction,
             overlay: this.overlay,
             wall: this.wall,
-            objectId: this.objectId
+            objectId: this.objectId,
+            itemId: this.itemId,
+            npcId: this.npcId
         };
     }
 
     toString() {
-        return `[object ${this.constructor.name} ` +
-            `${this.sector.getEntryName()} ${this.index}]`;
+        return (
+            `[object ${this.constructor.name} ` +
+            `${this.sector.getEntryName()} ${this.index}]`
+        );
     }
 }
 

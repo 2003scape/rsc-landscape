@@ -54,13 +54,24 @@ class Landscape {
         this.mapArchives.push({ archive: mapArchive, members });
     }
 
+    loadJmJag(mapBuffer) {
+        this.jmJag = true;
+
+        const mapArchive = new JagArchive();
+        mapArchive.readArchive(mapBuffer);
+
+        this.mapArchives.push({ archive: mapArchive, members: false });
+    }
+
     // load f2p maps
     loadJag(landBuffer, mapBuffer) {
+        this.jmJag = false;
         this.loadArchive(landBuffer, mapBuffer, false);
     }
 
     // load p2p maps
     loadMem(landBuffer, mapBuffer) {
+        this.jmJag = false;
         this.loadArchive(landBuffer, mapBuffer, true);
     }
 
@@ -72,27 +83,38 @@ class Landscape {
                     const sector = new Sector({ x, y, plane });
                     const entry = sector.getEntryName();
 
-                    for (const { members, archive } of this.landArchives) {
-                        const hash = hashFilename(`${entry}.hei`);
+                    if (this.jmJag) {
+                        const hash = hashFilename(`${entry}.jm`);
 
-                        if (archive.entries.has(hash)) {
-                            sector.parseHei(archive.getEntry(`${entry}.hei`));
-                            sector.members = members;
+                        for (const { members, archive } of this.mapArchives) {
+                            if (archive.entries.has(hash)) {
+                                sector.parseJm(archive.getEntry(`${entry}.jm`));
+                                sector.members = members;
+                            }
                         }
-                    }
+                    } else {
+                        for (const { members, archive } of this.landArchives) {
+                            const hash = hashFilename(`${entry}.hei`);
 
-                    for (const { members, archive } of this.mapArchives) {
-                        const datHash = hashFilename(`${entry}.dat`);
-
-                        if (archive.entries.has(datHash)) {
-                            sector.parseDat(archive.getEntry(`${entry}.dat`));
-                            sector.members = members;
+                            if (archive.entries.has(hash)) {
+                                sector.parseHei(archive.getEntry(`${entry}.hei`));
+                                sector.members = members;
+                            }
                         }
 
-                        const locHash = hashFilename(`${entry}.loc`);
+                        for (const { members, archive } of this.mapArchives) {
+                            const datHash = hashFilename(`${entry}.dat`);
 
-                        if (archive.entries.has(locHash)) {
-                            sector.parseLoc(archive.getEntry(`${entry}.loc`));
+                            if (archive.entries.has(datHash)) {
+                                sector.parseDat(archive.getEntry(`${entry}.dat`));
+                                sector.members = members;
+                            }
+
+                            const locHash = hashFilename(`${entry}.loc`);
+
+                            if (archive.entries.has(locHash)) {
+                                sector.parseLoc(archive.getEntry(`${entry}.loc`));
+                            }
                         }
                     }
 

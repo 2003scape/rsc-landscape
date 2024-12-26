@@ -14,19 +14,18 @@ async function parseArchives(argv, landscape) {
     for (const filename of argv.archives) {
         if (/^land(\d+)\.jag$/i.test(filename)) {
             landJag = filename;
-        } else if (/maps(\d+)\.jag$/i.test(filename)) {
+        } else if (/^maps(\d+)\.jag$/i.test(filename)) {
             mapsJag = filename;
-        } else if (/land(\d+)\.mem$/i.test(filename)) {
+        } else if (/^land(\d+)\.mem$/i.test(filename)) {
             landMem = filename;
-        } else if (/maps(\d+)\.mem$/i.test(filename)) {
+        } else if (/^maps(\d+)\.mem$/i.test(filename)) {
             mapsMem = filename;
         }
     }
 
     if (!(landMem && mapsMem) && !(landJag && mapsJag)) {
         process.exitCode = 1;
-        console.error('provide at least one maps and land archive ' +
-            'combination');
+        console.error('provide at least one maps and land archive combination');
         return;
     }
 

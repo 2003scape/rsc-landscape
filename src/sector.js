@@ -134,15 +134,60 @@ class Sector {
         }
     }
 
+    // parse the .jm file in the map archives
+    parseJm(mapData) {
+        let offset = 0;
+        let lastVal = 0;
+
+        for (let tile = 0; tile < MAX_TILES; tile++) {
+            lastVal = (lastVal + (mapData[offset++] & 0xff));
+            this.terrainHeight[tile] = lastVal;
+        }
+
+        lastVal = 0;
+
+        for (let tile = 0; tile < MAX_TILES; tile++) {
+            lastVal = (lastVal + (mapData[offset++] & 0xff));
+            this.terrainColour[tile] = lastVal;
+        }
+
+        for (let tile = 0; tile < MAX_TILES; tile++) {
+            this.wallsVertical[tile] = mapData[offset++] & 0xff;
+        }
+
+        for (let tile = 0; tile < MAX_TILES; tile++) {
+            this.wallsHorizontal[tile] = mapData[offset++] & 0xff;
+        }
+
+        for (let tile = 0; tile < MAX_TILES; tile++) {
+            this.wallsDiagonal[tile] = mapData.readUint16BE(offset);
+            offset += 2;
+        }
+
+        for (let tile = 0; tile < MAX_TILES; tile++) {
+            this.wallsRoof[tile] = mapData[offset++] & 0xff;
+        }
+
+        for (let tile = 0; tile < MAX_TILES; tile++) {
+            this.tileDecoration[tile] = mapData[offset++] & 0xff;
+        }
+
+        for (let tile = 0; tile < MAX_TILES; tile++) {
+            this.tileDirection[tile] = mapData[offset++] & 0xff;
+        }
+
+        this.empty = false;
+    }
+
     // parse the .hei file in the land archives
     parseHei(mapData) {
         let offset = 0;
         let lastVal = 0;
 
-        // this looks like some sort of psuedo compression:
-        // if data[offset] < 128, then it sets tile at index to that value.
-        // however, if data[offset] is > 128, it takes the last value that was
-        // < 128 and applies it from index to index + (value - 128)
+        // a form of rle compression. if data[offset] < 128, then it sets tile
+        // at index to that value. however, if data[offset] is > 128, it takes
+        // the last value that was < 128 and applies it from index to
+        // index + (value - 128)
         for (let tile = 0; tile < MAX_TILES; ) {
             let val = mapData[offset++] & 0xff;
 
@@ -211,40 +256,171 @@ class Sector {
     parseDat(mapData) {
         let offset = 0;
 
-        for (let tile = 0; tile < MAX_TILES; tile++) {
-            this.wallsVertical[tile] = mapData[offset++] & 0xff;
+        // TODO
+        const version = 2;
 
-            if (this.wallsVertical[tile] > 0) {
-                this.empty = false;
-            }
-        }
+        if (version === 0) {
+            for (let tile = 0; tile < MAX_TILES; tile++) {
+                this.wallsVertical[tile] = mapData[offset++] & 0xff;
 
-        for (let tile = 0; tile < MAX_TILES; tile++) {
-            this.wallsHorizontal[tile] = mapData[offset++] & 0xff;
-
-            if (this.wallsHorizontal[tile] > 0) {
-                this.empty = false;
-            }
-        }
-
-        for (let tile = 0; tile < MAX_TILES; tile++) {
-            this.wallsDiagonal[tile] = mapData[offset++] & 0xff;
-
-            if (this.wallsDiagonal[tile] > 0) {
-                this.empty = false;
-            }
-        }
-
-        for (let tile = 0; tile < MAX_TILES; tile++) {
-            let val = mapData[offset++] & 0xff;
-
-            if (val > 0) {
-                this.wallsDiagonal[tile] = val + NW_SE_OFFSET;
+                if (this.wallsVertical[tile] > 0) {
+                    this.empty = false;
+                }
             }
 
-            if (this.wallsDiagonal[tile] > 0) {
-                this.empty = false;
+            for (let tile = 0; tile < MAX_TILES; tile++) {
+                this.wallsHorizontal[tile] = mapData[offset++] & 0xff;
+
+                if (this.wallsHorizontal[tile] > 0) {
+                    this.empty = false;
+                }
             }
+
+            for (let tile = 0; tile < MAX_TILES; tile++) {
+                this.wallsDiagonal[tile] = mapData[offset++] & 0xff;
+
+                if (this.wallsDiagonal[tile] > 0) {
+                    this.empty = false;
+                }
+            }
+
+            for (let tile = 0; tile < MAX_TILES; tile++) {
+                let val = mapData[offset++] & 0xff;
+
+                if (val > 0) {
+                    this.wallsDiagonal[tile] = val + NW_SE_OFFSET;
+                }
+
+                if (this.wallsDiagonal[tile] > 0) {
+                    this.empty = false;
+                }
+            }
+        } else if (version === 1) {
+            for (let tile = 0; tile < MAX_TILES; ) {
+                const val = mapData[offset++] & 0xff;
+
+                if (val < 192) {
+                    this.wallsVertical[tile++] = val;
+
+                    if (val > 0) {
+                        this.empty = false;
+                    }
+                } else {
+                    for (let i = 0; i < val - 192; i++) {
+                        this.wallsVertical[tile++] = 0;
+                    }
+                }
+            }
+
+            for (let tile = 0; tile < MAX_TILES; ) {
+                const val = mapData[offset++] & 0xff;
+
+                if (val < 192) {
+                    this.wallsHorizontal[tile++] = val;
+
+                    if (val > 0) {
+                        this.empty = false;
+                    }
+                } else {
+                    for (let i = 0; i < val - 192; i++) {
+                        this.wallsHorizontal[tile++] = 0;
+                    }
+                }
+            }
+
+            for (let tile = 0; tile < MAX_TILES; ) {
+                const val = mapData[offset++] & 0xff;
+
+                if (val < 192) {
+                    this.wallsDiagonal[tile++] = val;
+
+                    if (val > 0) {
+                        this.empty = false;
+                    }
+                } else {
+                    for (let i = 0; i < val - 192; i++) {
+                        this.wallsDiagonal[tile++] = 0;
+                    }
+                }
+            }
+
+            for (let tile = 0; tile < MAX_TILES; ) {
+                const val = mapData[offset++] & 0xff;
+
+                if (val < 192) {
+                    this.wallsDiagonal[tile++] = val + NW_SE_OFFSET;
+
+                    if (val > 0) {
+                        this.empty = false;
+                    }
+                } else {
+                    tile += (val - 192);
+                }
+            }
+
+        } else if (version === 2) {
+            for (let tile = 0; tile < MAX_TILES; ) {
+                const val = mapData[offset++] & 0xff;
+
+                if (val < 128) {
+                    this.wallsVertical[tile++] = val;
+
+                    if (val > 0) {
+                        this.empty = false;
+                    }
+                } else {
+                    for (let i = 0; i < val - 128; i++) {
+                        this.wallsVertical[tile++] = 0;
+                    }
+                }
+            }
+
+            for (let tile = 0; tile < MAX_TILES; ) {
+                const val = mapData[offset++] & 0xff;
+
+                if (val < 128) {
+                    this.wallsHorizontal[tile++] = val;
+
+                    if (val > 0) {
+                        this.empty = false;
+                    }
+                } else {
+                    for (let i = 0; i < val - 128; i++) {
+                        this.wallsHorizontal[tile++] = 0;
+                    }
+                }
+            }
+
+            for (let tile = 0; tile < MAX_TILES; ) {
+                const val = mapData[offset++] & 0xff;
+
+                if (val < 128) {
+                    this.wallsDiagonal[tile++] = val;
+
+                    if (val > 0) {
+                        this.empty = false;
+                    }
+                } else {
+                    for (let i = 0; i < val - 128; i++) {
+                        this.wallsDiagonal[tile++] = 0;
+                    }
+                }
+            }
+
+            for (let tile = 0; tile < MAX_TILES; ) {
+                const val = mapData[offset++] & 0xff;
+
+                if (val < 128) {
+                    this.wallsDiagonal[tile++] = val + NW_SE_OFFSET;
+
+                    if (val > 0) {
+                        this.empty = false;
+                    }
+                } else {
+                    tile += (val - 128);
+                }
+            }
+
         }
 
         for (let tile = 0; tile < MAX_TILES; ) {
