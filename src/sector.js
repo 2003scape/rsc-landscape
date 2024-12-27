@@ -7,12 +7,6 @@ const SECTOR_HEIGHT = 48;
 // number of tiles in each sector
 const MAX_TILES = SECTOR_WIDTH * SECTOR_HEIGHT;
 
-// offset for \ diagonals (as opposed to / which are 0-12000)
-const NW_SE_OFFSET = 12000;
-
-// offset in diagonals? for storing object IDs on particular tiles
-const OBJECT_OFFSET = 48000;
-
 // encode the height/colour buffers so we can store 0-255 within 0-127
 function encodeBuffer(buffer, lastVal) {
     const encoded = new Int8Array(MAX_TILES);
@@ -20,7 +14,7 @@ function encodeBuffer(buffer, lastVal) {
     for (let tileY = 0; tileY < SECTOR_HEIGHT; tileY++) {
         for (let tileX = 0; tileX < SECTOR_WIDTH; tileX++) {
             const index = tileX * SECTOR_WIDTH + tileY;
-            const enc = ((buffer[index] & 0xff) / 2) - (lastVal & 0x7f);
+            const enc = (buffer[index] & 0xff) / 2 - (lastVal & 0x7f);
             encoded[index] = enc & 0x7f;
             lastVal += enc;
         }
@@ -87,6 +81,18 @@ function compressZeroBuffer(buffer) {
     return new Int8Array(compressed);
 }
 
+// used in jm maps
+function compressDeltaBuffer(buffer) {
+    const compressed = new Int8Array(buffer.length);
+    compressed[0] = buffer[0];
+
+    for (let i = 1; i < buffer.length; i++) {
+        compressed[i] = buffer[i] - buffer[i - 1];
+    }
+
+    return compressed;
+}
+
 class Sector {
     constructor({ x, y, plane, members, tiles }) {
         this.x = x;
@@ -140,14 +146,14 @@ class Sector {
         let lastVal = 0;
 
         for (let tile = 0; tile < MAX_TILES; tile++) {
-            lastVal = (lastVal + (mapData[offset++] & 0xff));
+            lastVal = lastVal + (mapData[offset++] & 0xff);
             this.terrainHeight[tile] = lastVal;
         }
 
         lastVal = 0;
 
         for (let tile = 0; tile < MAX_TILES; tile++) {
-            lastVal = (lastVal + (mapData[offset++] & 0xff));
+            lastVal = lastVal + (mapData[offset++] & 0xff);
             this.terrainColour[tile] = lastVal;
         }
 
@@ -160,7 +166,9 @@ class Sector {
         }
 
         for (let tile = 0; tile < MAX_TILES; tile++) {
-            this.wallsDiagonal[tile] = mapData.readUint16BE(offset);
+            this.wallsDiagonal[tile] =
+                (mapData[offset] << 8) | mapData[offset + 1];
+
             offset += 2;
         }
 
@@ -241,7 +249,7 @@ class Sector {
             for (let tileX = 0; tileX < SECTOR_WIDTH; tileX++) {
                 const index = tileX * SECTOR_WIDTH + tileY;
 
-                lastVal = this.terrainColour[index] + lastVal & 0x7f;
+                lastVal = (this.terrainColour[index] + lastVal) & 0x7f;
                 this.terrainColour[index] = (lastVal * 2) & 0xff;
 
                 if (this.terrainColour[index] > 0) {
@@ -249,7 +257,6 @@ class Sector {
                 }
             }
         }
-
     }
 
     // parse the .dat files in the map archives
@@ -288,7 +295,7 @@ class Sector {
                 let val = mapData[offset++] & 0xff;
 
                 if (val > 0) {
-                    this.wallsDiagonal[tile] = val + NW_SE_OFFSET;
+                    this.wallsDiagonal[tile] = val + Tile.NW_SE_OFFSET;
                 }
 
                 if (this.wallsDiagonal[tile] > 0) {
@@ -348,16 +355,15 @@ class Sector {
                 const val = mapData[offset++] & 0xff;
 
                 if (val < 192) {
-                    this.wallsDiagonal[tile++] = val + NW_SE_OFFSET;
+                    this.wallsDiagonal[tile++] = val + Tile.NW_SE_OFFSET;
 
                     if (val > 0) {
                         this.empty = false;
                     }
                 } else {
-                    tile += (val - 192);
+                    tile += val - 192;
                 }
             }
-
         } else if (version === 2) {
             for (let tile = 0; tile < MAX_TILES; ) {
                 const val = mapData[offset++] & 0xff;
@@ -411,16 +417,15 @@ class Sector {
                 const val = mapData[offset++] & 0xff;
 
                 if (val < 128) {
-                    this.wallsDiagonal[tile++] = val + NW_SE_OFFSET;
+                    this.wallsDiagonal[tile++] = val + Tile.NW_SE_OFFSET;
 
                     if (val > 0) {
                         this.empty = false;
                     }
                 } else {
-                    tile += (val - 128);
+                    tile += val - 128;
                 }
             }
-
         }
 
         for (let tile = 0; tile < MAX_TILES; ) {
@@ -476,7 +481,7 @@ class Sector {
             let val = mapData[offset++] & 0xff;
 
             if (val < 128) {
-                this.wallsDiagonal[tile++] = val + OBJECT_OFFSET;
+                this.wallsDiagonal[tile++] = val + Tile.OBJECT_OFFSET;
             } else {
                 tile += val - 128;
             }
@@ -519,12 +524,19 @@ class Sector {
                 if (diagonal && diagonal.direction === '/') {
                     this.wallsDiagonal[index] = diagonal.overlay;
                 } else if (diagonal && diagonal.direction === '\\') {
-                    this.wallsDiagonal[index] = diagonal.overlay + NW_SE_OFFSET;
+                    this.wallsDiagonal[index] =
+                        diagonal.overlay + Tile.NW_SE_OFFSET;
                 }
 
                 if (tile.objectId) {
                     this.wallsDiagonal[index] =
-                        tile.objectId + OBJECT_OFFSET + 1;
+                        tile.objectId + Tile.OBJECT_OFFSET + 1;
+                } else if (tile.itemId) {
+                    this.wallsDiagonal[index] =
+                        tile.itemId + Tile.ITEM_OFFSET + 1;
+                } else if (tile.npcId) {
+                    this.wallsDiagonal[index] =
+                        tile.npcId + Tile.NPC_OFFSET + 1;
                 }
 
                 this.tileDecoration[index] = tile.overlay || 0;
@@ -535,8 +547,14 @@ class Sector {
 
     // convert sector to the filename used in the archives
     getEntryName() {
-        return 'm' + this.plane + Math.floor(this.x / 10) + this.x % 10 +
-            Math.floor(this.y / 10) + this.y % 10;
+        return (
+            'm' +
+            this.plane +
+            Math.floor(this.x / 10) +
+            (this.x % 10) +
+            Math.floor(this.y / 10) +
+            (this.y % 10)
+        );
     }
 
     // convert Tile objects back into a `.hei` file for land archives
@@ -547,8 +565,9 @@ class Sector {
         const compressedElevation = compressBuffer(encodedElevation, 0);
         const compressedColour = compressBuffer(encodedColour, 0);
 
-        const mapData = new Int8Array(compressedElevation.length +
-            compressedColour.length);
+        const mapData = new Int8Array(
+            compressedElevation.length + compressedColour.length
+        );
 
         mapData.set(compressedElevation, 0);
         mapData.set(compressedColour, compressedElevation.length);
@@ -564,14 +583,20 @@ class Sector {
         mapData.push(...this.wallsHorizontal);
 
         // add / first
-        mapData.push(...this.wallsDiagonal.map(diagonal => {
-            return diagonal < NW_SE_OFFSET ? diagonal : 0;
-        }));
+        mapData.push(
+            ...this.wallsDiagonal.map((diagonal) => {
+                return diagonal < Tile.NW_SE_OFFSET ? diagonal : 0;
+            })
+        );
 
         // then add \
-        mapData.push(...this.wallsDiagonal.map(diagonal => {
-            return diagonal >= NW_SE_OFFSET ? diagonal - NW_SE_OFFSET : 0;
-        }));
+        mapData.push(
+            ...this.wallsDiagonal.map((diagonal) => {
+                return diagonal >= Tile.NW_SE_OFFSET
+                    ? diagonal - Tile.NW_SE_OFFSET
+                    : 0;
+            })
+        );
 
         mapData.push(...compressZeroBuffer(this.wallsRoof));
         mapData.push(...compressBuffer(this.tileDecoration, 0));
@@ -586,17 +611,55 @@ class Sector {
         let empty = true;
 
         const compressedObjects = compressZeroBuffer(
-            this.wallsDiagonal.map(val => {
-                val = val >= OBJECT_OFFSET ? val - OBJECT_OFFSET : 0;
+            this.wallsDiagonal.map((val) => {
+                val = val >= Tile.OBJECT_OFFSET ? val - Tile.OBJECT_OFFSET : 0;
 
                 if (val !== 0) {
                     empty = false;
                 }
 
                 return val;
-            }));
+            })
+        );
 
         return empty ? null : compressedObjects;
+    }
+
+    toJm() {
+        let offset = 0;
+
+        // 7 int8 fields, 1 int16 field
+        const jmData = new Int8Array(7 * MAX_TILES + 2 * MAX_TILES);
+
+        jmData.set(compressDeltaBuffer(this.terrainHeight), offset);
+        offset += MAX_TILES;
+
+        jmData.set(compressDeltaBuffer(this.terrainColour), offset);
+        offset += MAX_TILES;
+
+        jmData.set(this.wallsVertical, offset);
+        offset += MAX_TILES;
+
+        jmData.set(this.wallsHorizontal, offset);
+        offset += MAX_TILES;
+
+        for (let i = 0; i < MAX_TILES; i++) {
+            const value = this.wallsDiagonal[i];
+            jmData[offset] = (value >> 8) & 0xff;
+            jmData[offset + 1] = value & 0xff;
+
+            offset += 2;
+        }
+
+        jmData.set(this.wallsRoof, offset);
+        offset += MAX_TILES;
+
+        jmData.set(this.tileDecoration, offset);
+        offset += MAX_TILES;
+
+        jmData.set(this.tileDirection, offset);
+
+        return jmData;
     }
 
     toCanvas(options = {}, neighbours = []) {
@@ -608,8 +671,10 @@ class Sector {
 
     toString(terminal = false, colourLevel = -1) {
         if (!terminal) {
-            return `[object ${this.constructor.name} ${this.getEntryName()} ` +
-                `${this.width}x${this.height}]`;
+            return (
+                `[object ${this.constructor.name} ${this.getEntryName()} ` +
+                `${this.width}x${this.height}]`
+            );
         }
 
         const painter = new SectorPainter(this);

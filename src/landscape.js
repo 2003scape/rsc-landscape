@@ -97,7 +97,10 @@ class Landscape {
                             const hash = hashFilename(`${entry}.hei`);
 
                             if (archive.entries.has(hash)) {
-                                sector.parseHei(archive.getEntry(`${entry}.hei`));
+                                sector.parseHei(
+                                    archive.getEntry(`${entry}.hei`)
+                                );
+
                                 sector.members = members;
                             }
                         }
@@ -106,14 +109,19 @@ class Landscape {
                             const datHash = hashFilename(`${entry}.dat`);
 
                             if (archive.entries.has(datHash)) {
-                                sector.parseDat(archive.getEntry(`${entry}.dat`));
+                                sector.parseDat(
+                                    archive.getEntry(`${entry}.dat`)
+                                );
+
                                 sector.members = members;
                             }
 
                             const locHash = hashFilename(`${entry}.loc`);
 
                             if (archive.entries.has(locHash)) {
-                                sector.parseLoc(archive.getEntry(`${entry}.loc`));
+                                sector.parseLoc(
+                                    archive.getEntry(`${entry}.loc`)
+                                );
                             }
                         }
                     }
@@ -184,7 +192,7 @@ class Landscape {
         } else if (y >= 1007 && y <= 1007 + 943) {
             plane = 1; // first floor
             y -= 943;
-        } else if (y >= 1008 + 943 && y <= 1007 + (2 * 943)) {
+        } else if (y >= 1008 + 943 && y <= 1007 + 2 * 943) {
             plane = 2; // second floor
             y -= 943 * 2;
         } else {
@@ -209,8 +217,10 @@ class Landscape {
     }
 
     toString() {
-        return `[object ${this.constructor.name} ${this.width}x` +
-            `${this.height}x${this.depth}]`;
+        return (
+            `[object ${this.constructor.name} ${this.width}x` +
+            `${this.height}x${this.depth}]`
+        );
     }
 }
 

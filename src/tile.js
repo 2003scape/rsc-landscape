@@ -5,6 +5,14 @@ const BLACK = 'rgb(0, 0, 0)';
 
 const PLANE_HEIGHT = 944;
 
+// offset for \ diagonals (as opposed to / which are 0-12000)
+const NW_SE_OFFSET = 12000;
+
+// offset in diagonals? for storing entity IDs on particular tiles
+const OBJECT_OFFSET = 48000;
+const ITEM_OFFSET = 36000;
+const NPC_OFFSET = 24000;
+
 class Tile {
     constructor(tile) {
         this.sector = tile.sector;
@@ -117,5 +125,10 @@ class Tile {
         );
     }
 }
+
+Tile.NW_SE_OFFSET = NW_SE_OFFSET;
+Tile.OBJECT_OFFSET = OBJECT_OFFSET;
+Tile.ITEM_OFFSET = ITEM_OFFSET;
+Tile.NPC_OFFSET = NPC_OFFSET;
 
 module.exports = Tile;
